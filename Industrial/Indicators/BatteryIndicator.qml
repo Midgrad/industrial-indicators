@@ -6,7 +6,7 @@ import Industrial.Controls 1.0 as Controls
 PercentageIndicator {
     id: root
 
-    implicitWidth: industrial.baseSize
+    implicitWidth: Controls.Theme.baseSize
     implicitHeight: width
 
     Controls.ColoredIcon {

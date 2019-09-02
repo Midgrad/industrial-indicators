@@ -7,7 +7,7 @@ PercentageIndicator {
     id: root
 
     implicitWidth: height + label.width
-    implicitHeight: industrial.baseSize
+    implicitHeight: Controls.Theme.baseSize
 
     Controls.ColoredIcon {
         anchors.left: parent.left

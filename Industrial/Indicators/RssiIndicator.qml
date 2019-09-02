@@ -11,8 +11,8 @@ Item {
     property real rssi: minRssiValue
     property real minRssiValue: -120
 
-    implicitWidth: industrial.baseSize * 3
-    implicitHeight: industrial.baseSize
+    implicitWidth: Controls.Theme.baseSize * 3
+    implicitHeight: Controls.Theme.baseSize
 
     Row {
         id: row

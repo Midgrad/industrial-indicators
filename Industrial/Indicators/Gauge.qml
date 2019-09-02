@@ -14,8 +14,8 @@ Item {
 
     property alias model: repeater.model
 
-    implicitWidth: industrial.baseSize * 4
-    implicitHeight: industrial.baseSize * 0.5
+    implicitWidth: Controls.Theme.baseSize * 4
+    implicitHeight: Controls.Theme.baseSize * 0.5
 
     onModelChanged: recalculate()
     onValueChanged: recalculate()
