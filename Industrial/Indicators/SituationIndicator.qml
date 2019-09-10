@@ -5,6 +5,7 @@ import Industrial.Controls 1.0 as Controls
 Item {
     id: root
 
+    // TODO: make calculations like AimIndicator
     property bool guided: false
     property real heading: 0
     property real targetBearing: 0

@@ -31,6 +31,7 @@ OperationalItem {
     property int tickFactor: 5
 
     implicitHeight: width
+    implicitWidth: height
 
     Item {
         id: compassScale

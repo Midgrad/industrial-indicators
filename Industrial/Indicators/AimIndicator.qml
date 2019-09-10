@@ -31,7 +31,7 @@ Item {
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(0, 0);
-            ctx.arc(0, 0, height / 2, (-90) * Math.PI / 180, (fov - 90) * Math.PI / 180, false);
+            ctx.arc(0, 0, height / 2, (-90) * Math.PI / 180, (fov - 90) * Math.PI / 180, fov < 0);
             ctx.lineTo(0, 0);
             ctx.fill();
 

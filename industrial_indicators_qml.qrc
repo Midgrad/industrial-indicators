@@ -33,5 +33,6 @@
         <file>Industrial/Indicators/SituationIndicator.qml</file>
         <file>Industrial/Indicators/AimIndicator.qml</file>
         <file>Industrial/Indicators/LandingIndicator.qml</file>
+        <file>Industrial/Indicators/Joystick.qml</file>
     </qresource>
 </RCC>
