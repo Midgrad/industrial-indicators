@@ -16,8 +16,7 @@ OperationalItem {
         return Theme.textColor;
     }
 
-    property real fontSize: Theme.fontSize
-
+    property real fontSize: height * 0.07
     property real tickMinorSize: fontSize * 0.3
     property real tickMajorSize: fontSize * 0.5
     property real tickTextedSize: fontSize * 0.8
