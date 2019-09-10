@@ -30,4 +30,5 @@ SpeedArrow 1.0 SpeedArrow.qml
 Compass 1.0 Compass.qml
 CompassTick 1.0 CompassTick.qml
 SituationIndicator 1.0 SituationIndicator.qml
+AimIndicator 1.0 AimIndicator.qml
 LandingIndicator 1.0 LandingIndicator.qml
