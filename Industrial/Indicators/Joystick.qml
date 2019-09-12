@@ -15,8 +15,8 @@ Item {
     property real maxX: 1
     property real minY: -1
     property real maxY: 1
-    property real stepX: (maxX - minX) / 8
-    property real stepY: (maxY - minY) / 8
+    property real ticksX: 10
+    property real ticksY: 10
     property real feedbackX: (maxX - minX) / 2
     property real feedbackY: (maxY - minY) / 2
 
@@ -42,7 +42,8 @@ Item {
     Repeater {
         model: {
             var ticks = [];
-            for (var i = minX; i <= maxX; i += stepX) {
+            if (minX >= maxX) return ticks;
+            for (var i = minX; i <= maxX; i += (maxX - minX) / ticksX) {
                 ticks.push(i);
             }
             return ticks;
@@ -61,7 +62,8 @@ Item {
     Repeater {
         model: {
             var ticks = [];
-            for (var i = minY; i <= maxY; i += stepY) {
+            if (minY >= maxY) return ticks;
+            for (var i = minY; i <= maxY; i += (maxY - minY) / ticksY) {
                 ticks.push(i);
             }
             return ticks;
