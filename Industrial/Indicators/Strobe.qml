@@ -9,6 +9,7 @@ Item {
     property color color: Theme.textColor
     property color shadowColor: "black"
     property real thickness: 2
+    property var dash: []
 
     implicitHeight: width
     implicitWidth: height
@@ -31,14 +32,16 @@ Item {
 
             ctx.lineWidth = thickness;
             ctx.strokeStyle = color;
+            ctx.setLineDash(dash);
 
             ctx.save();
             ctx.beginPath();
 
-            ctx.moveTo(0, height / 2);
-            ctx.lineTo(width, height / 2);
-            ctx.moveTo(width / 2, 0);
-            ctx.lineTo(width / 2, height);
+            ctx.moveTo(0, 0);
+            ctx.lineTo(width, 0);
+            ctx.lineTo(width, height);
+            ctx.lineTo(0, height);
+            ctx.closePath();
 
             ctx.stroke();
             ctx.restore();
