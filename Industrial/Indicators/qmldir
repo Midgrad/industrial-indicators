@@ -33,3 +33,4 @@ SituationIndicator 1.0 SituationIndicator.qml
 AimIndicator 1.0 AimIndicator.qml
 LandingIndicator 1.0 LandingIndicator.qml
 Joystick 1.0 Joystick.qml
+Cross 1.0 Cross.qml
