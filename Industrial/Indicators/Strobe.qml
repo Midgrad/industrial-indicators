@@ -1,61 +1,49 @@
 import QtQuick 2.6
 import QtGraphicalEffects 1.0
 import Industrial.Indicators 1.0
+import QtQuick.Shapes 1.13
 
-Item {
-    id: cross
+Shape {
+    id: root
     property real effectiveHeight: height
 
     property color color: Theme.textColor
     property color shadowColor: "black"
     property real thickness: 2
-    property var dash: []
+    property bool tracking: false
 
     implicitHeight: width
     implicitWidth: height
-    antialiasing: true
+    visible: width > 0 && height > 0
 
-    onWidthChanged: canvas.requestPaint()
-    onHeightChanged: canvas.requestPaint()
-    onColorChanged: canvas.requestPaint()
-    onThicknessChanged: canvas.requestPaint()
-    onDashChanged: canvas.requestPaint()
-
-    Canvas {
-        id: canvas
+    // TODO: relace all canvas crap with shapes
+    Shape {
+        id: rect
         anchors.fill: parent
         visible: false
+        vendorExtensionsEnabled: true
 
-        onPaint: {
-            var ctx = canvas.getContext('2d');
+        ShapePath {
+            strokeColor: root.color
+            strokeWidth: root.thickness
+            fillColor: "transparent"
+            strokeStyle: tracking ? ShapePath.SolidLine : ShapePath.DashLine
+            dashPattern: [8, 6]
 
-            ctx.clearRect(0, 0, width, height);
-
-            ctx.lineWidth = thickness;
-            ctx.strokeStyle = color;
-            ctx.setLineDash(dash);
-
-            ctx.save();
-            ctx.beginPath();
-
-            ctx.moveTo(0, 0);
-            ctx.lineTo(width, 0);
-            ctx.lineTo(width, height);
-            ctx.lineTo(0, height);
-            ctx.closePath();
-
-            ctx.stroke();
-            ctx.restore();
+            PathLine { x: width; y: 0 }
+            PathLine { x: width; y: height }
+            PathLine { x: 0; y: height }
+            PathLine { x: 0; y: 0 }
         }
     }
 
     DropShadow {
-        anchors.fill: canvas
+        anchors.fill: rect
+        source: rect
         horizontalOffset: 1
         verticalOffset: 1
         radius: parent.thickness + 1
         color: shadowColor
-        source: canvas
     }
 }
 

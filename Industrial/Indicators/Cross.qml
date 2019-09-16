@@ -3,7 +3,7 @@ import QtGraphicalEffects 1.0
 import Industrial.Indicators 1.0
 
 Item {
-    id: cross
+    id: root
     property real effectiveHeight: height
 
     property color color: Theme.textColor
