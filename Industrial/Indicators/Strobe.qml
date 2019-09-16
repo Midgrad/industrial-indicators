@@ -19,6 +19,7 @@ Item {
     onHeightChanged: canvas.requestPaint()
     onColorChanged: canvas.requestPaint()
     onThicknessChanged: canvas.requestPaint()
+    onDashChanged: canvas.requestPaint()
 
     Canvas {
         id: canvas
@@ -50,10 +51,9 @@ Item {
 
     DropShadow {
         anchors.fill: canvas
-        horizontalOffset: 3
-        verticalOffset: 3
-        radius: 8.0
-        samples: 17
+        horizontalOffset: 1
+        verticalOffset: 1
+        radius: parent.thickness + 1
         color: shadowColor
         source: canvas
     }

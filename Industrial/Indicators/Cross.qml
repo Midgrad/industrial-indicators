@@ -8,7 +8,7 @@ Item {
 
     property color color: Theme.textColor
     property color shadowColor: "black"
-    property real thickness: 2
+    property real thickness: 1
 
     implicitHeight: width
     implicitWidth: height
@@ -45,12 +45,12 @@ Item {
         }
     }
 
+    // TODO: common indicators drop shadow
     DropShadow {
         anchors.fill: canvas
-        horizontalOffset: 3
-        verticalOffset: 3
-        radius: 8.0
-        samples: 17
+        horizontalOffset: 1
+        verticalOffset: 1
+        radius: parent.thickness + 1
         color: shadowColor
         source: canvas
     }
