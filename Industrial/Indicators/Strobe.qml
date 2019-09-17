@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import QtGraphicalEffects 1.0
 import Industrial.Indicators 1.0
-import QtQuick.Shapes 1.13
+import QtQuick.Shapes 1.0
 
 Shape {
     id: root
