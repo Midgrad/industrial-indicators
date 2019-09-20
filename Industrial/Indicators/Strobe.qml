@@ -3,7 +3,7 @@ import QtGraphicalEffects 1.0
 import Industrial.Indicators 1.0
 import QtQuick.Shapes 1.0
 
-Shape {
+Item {
     id: root
     property real effectiveHeight: height
 
@@ -20,8 +20,6 @@ Shape {
     Shape {
         id: rect
         anchors.fill: parent
-        visible: false
-        vendorExtensionsEnabled: true
 
         ShapePath {
             strokeColor: root.color
