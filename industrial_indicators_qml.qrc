@@ -36,5 +36,6 @@
         <file>Industrial/Indicators/Joystick.qml</file>
         <file>Industrial/Indicators/Cross.qml</file>
         <file>Industrial/Indicators/Strobe.qml</file>
+        <file>Industrial/Indicators/Arrow.qml</file>
     </qresource>
 </RCC>
