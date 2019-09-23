@@ -1,7 +1,6 @@
 import QtQuick 2.6
-import QtQuick.Shapes 1.0
 
-Shape {
+Item {
     id: root
 
     property color color: Theme.textColor
@@ -64,7 +63,7 @@ Shape {
             ctx.restore();
         }
     }
-
+}
 //    ShapePath {
 //        strokeColor: root.color
 //        strokeWidth: root.thickness
@@ -77,5 +76,5 @@ Shape {
 //        PathLine { x: 0; y: height }
 //        PathLine { x: 0; y: 0 }
 //    }
-}
+
 

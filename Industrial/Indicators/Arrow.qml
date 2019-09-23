@@ -30,9 +30,9 @@ Item {
             ctx.save();
             ctx.beginPath();
 
-            ctx.moveTo(0, height);
-            ctx.lineTo(width / 2, 0);
-            ctx.lineTo(width, height);
+            ctx.moveTo(thickness, height - thickness);
+            ctx.lineTo(width / 2, thickness);
+            ctx.lineTo(width - thickness, height - thickness);
 
             ctx.stroke();
             ctx.restore();
