@@ -6,6 +6,7 @@ Shape {
 
     property color color: Theme.textColor
     property real thickness: 2
+    property real cornerSize: Math.max(width, height) / 6
     property bool tracking: false
 
     implicitHeight: width
@@ -35,17 +36,29 @@ Shape {
             ctx.beginPath();
 
             if (tracking) {
-                ctx.setLineDash([]);
+                ctx.moveTo(0, 0);
+                ctx.lineTo(width, 0);
+                ctx.lineTo(width, height);
+                ctx.lineTo(0, height);
+                ctx.closePath();
             }
             else {
-                ctx.setLineDash([10, 10]);
-            }
+                ctx.moveTo(0, cornerSize);
+                ctx.lineTo(0, 0);
+                ctx.lineTo(cornerSize, 0);
 
-            ctx.moveTo(0, 0);
-            ctx.lineTo(width, 0);
-            ctx.lineTo(width, height);
-            ctx.lineTo(0, height);
-            ctx.closePath();
+                ctx.moveTo(width - cornerSize, 0);
+                ctx.lineTo(width, 0);
+                ctx.lineTo(width, cornerSize);
+
+                ctx.moveTo(width, height - cornerSize);
+                ctx.lineTo(width, height);
+                ctx.lineTo(width - cornerSize, height);
+
+                ctx.moveTo(cornerSize, height);
+                ctx.lineTo(0, height);
+                ctx.lineTo(0, height - cornerSize);
+            }
 
             ctx.stroke();
             ctx.restore();
