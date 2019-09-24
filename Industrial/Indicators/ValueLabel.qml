@@ -4,7 +4,6 @@ import Industrial.Indicators 1.0
 OperationalItem {
     id: root
 
-    property string prefix
     property int digits: 0
     property real value: NaN
     property bool active: false
@@ -15,6 +14,8 @@ OperationalItem {
         return Theme.textColor;
     }
 
+    property alias prefix: prefixText.text
+    property alias valueText: valueText.text
     property alias prefixFont: prefixText.font
     property alias valueFont: valueText.font
 
@@ -29,7 +30,6 @@ OperationalItem {
         color: root.color
         font.pixelSize: Theme.fontSize
         visible: prefix.length > 0
-        text: prefix
     }
 
     Text {
