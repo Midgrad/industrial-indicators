@@ -4,16 +4,15 @@ Item {
     id: root
 
     property color color: Theme.textColor
-    property real thickness: 2
 
     implicitHeight: width
     implicitWidth: height
     visible: width > 0 && height > 0
+    antialiasing: true
 
     onWidthChanged: canvas.requestPaint()
     onHeightChanged: canvas.requestPaint()
     onColorChanged: canvas.requestPaint()
-    onThicknessChanged: canvas.requestPaint()
 
     Canvas {
         id: canvas
@@ -23,18 +22,18 @@ Item {
             var ctx = canvas.getContext('2d');
 
             ctx.clearRect(0, 0, width, height);
-
-            ctx.lineWidth = thickness;
-            ctx.strokeStyle = color;
+            ctx.fillStyle = color;
 
             ctx.save();
             ctx.beginPath();
 
-            ctx.moveTo(thickness, height - thickness);
-            ctx.lineTo(width / 2, thickness);
-            ctx.lineTo(width - thickness, height - thickness);
+            ctx.moveTo(0, height);
+            ctx.lineTo(width / 2, 0);
+            ctx.lineTo(width, height);
+            ctx.lineTo(width / 2, height * 0.25);
+            ctx.closePath();
 
-            ctx.stroke();
+            ctx.fill();
             ctx.restore();
         }
     }
