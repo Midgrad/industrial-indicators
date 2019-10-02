@@ -12,6 +12,8 @@ Item {
     property int spacing: 1
     property color color: Theme.textColor
 
+    property int activeModelNum: 1
+
     property alias model: repeater.model
 
     implicitWidth: Controls.Theme.baseSize * 4
@@ -32,6 +34,7 @@ Item {
             }
             else {
                 color = model[i].color;
+                activeModelNum = i
                 _persent += (value - model[i - 1].value); // FIXME: recalc values to percents
                 break;
             }
@@ -63,7 +66,9 @@ Item {
                     anchors.leftMargin: index == 0 ? 0 : -radius
                     anchors.rightMargin: index == repeater.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: modelData.color
+                    color: index == root.activeModelNum ? modelData.color : "transparent"
+                    border.width: 1
+                    border.color: modelData.color
                 }
             }
         }
