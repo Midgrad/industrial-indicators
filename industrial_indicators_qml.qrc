@@ -38,5 +38,6 @@
         <file>Industrial/Indicators/Cross.qml</file>
         <file>Industrial/Indicators/Strobe.qml</file>
         <file>Industrial/Indicators/Arrow.qml</file>
+        <file>Industrial/Indicators/TwinGauge.qml</file>
     </qresource>
 </RCC>

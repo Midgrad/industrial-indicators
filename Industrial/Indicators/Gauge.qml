@@ -34,8 +34,17 @@ Item {
             }
             else {
                 color = model[i].color;
-                activeModelNum = i
-                _persent += (value - model[i - 1].value); // FIXME: recalc values to percents
+                activeModelNum = i;
+                if (i == 0)
+                {
+                    _persent += Math.abs((model[i].percentage) *
+                                         (value - 0) / (model[i].value - 0));
+                }
+                else
+                {
+                    _persent += Math.abs(model[i].percentage *
+                                        (value - model[i - 1].value) / (model[i].value - model[i - 1].value));
+                }
                 break;
             }
         }
