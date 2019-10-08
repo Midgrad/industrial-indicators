@@ -1,6 +1,8 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
 
+import Industrial.Controls 1.0 as Controls
+
 Item {
     id: root
 

@@ -8,6 +8,7 @@ OperationalItem {
     property real heading: 0
     property real course: 0
     property bool courseEnabled: true
+    readonly property real safeHeading: isNaN(heading) ? 0 : heading
 
     property color courseColor: Theme.positiveColor
     property color headingColor: {
