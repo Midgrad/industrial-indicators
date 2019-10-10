@@ -23,10 +23,10 @@ Item {
     onValueChanged: recalculate()
 
     function recalculate() {
-        if (!model || model.length < 1) return;
+        if (!model || model.length < 2) return;
         _persent = 0;
 
-        for (var i = 0; i < model.length; ++i) {
+        for (var i = 1; i < model.length; ++i) {
             if (i < model.length - 1 && value > model[i + 1].value) color = model[i].color;
 
             if (value > model[i].value) {
@@ -35,16 +35,8 @@ Item {
             else {
                 color = model[i].color;
                 activeModelNum = i;
-                if (i == 0)
-                {
-                    _persent += Math.abs((model[i].percentage) *
-                                         (value - 0) / (model[i].value - 0));
-                }
-                else
-                {
-                    _persent += Math.abs(model[i].percentage *
-                                        (value - model[i - 1].value) / (model[i].value - model[i - 1].value));
-                }
+                _persent += Math.abs(model[i].percentage *
+                                    (value - model[i - 1].value) / (model[i].value - model[i - 1].value));
                 break;
             }
         }
@@ -57,6 +49,7 @@ Item {
         Repeater {
             id: repeater
             model: [
+                {value: 0},
                 { percentage: 10, value: 10, color: Theme.dangerColor },
                 { percentage: 20, value: 30, color: Theme.cautionColor },
                 { percentage: 40, value: 70, color: Theme.positiveColor },
@@ -72,7 +65,7 @@ Item {
 
                 Rectangle {
                     anchors.fill: parent
-                    anchors.leftMargin: index == 0 ? 0 : -radius
+                    anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeater.count - 1 ? 0 : -radius
                     radius: root.rounding
                     color: index == root.activeModelNum ? modelData.color : "transparent"
