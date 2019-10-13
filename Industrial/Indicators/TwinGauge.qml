@@ -32,12 +32,19 @@ Item {
 
 
     function recalculateUp() {
-        if (!modelUp || modelUp.length < 2) return;
+        if (!modelUp || modelUp.length < 2 ||
+                valueUp < modelUp[0].value ||
+                valueUp > modelUp[modelUp.length - 1].value)
+        {
+            activeModelNumUp = 0;
+            _persentUp = 0;
+            colorUp = Controls.Theme.colors.disabled;
+            return;
+        }
+
         _persentUp = 0;
 
         for (var i = 1; i < modelUp.length; ++i) {
-            if (i < modelUp.length - 1 && valueUp > modelUp[i + 1].value) colorUp = modelUp[i].color;
-
             if (valueUp > modelUp[i].value) {
                 _persentUp += modelUp[i].percentage;
             }
@@ -55,20 +62,29 @@ Item {
 
 
     function recalculateDown() {
-        if (!modelDown || modelDown.length < 2) return;
+        if (!modelDown || modelDown.length < 2 ||
+                valueDown < modelDown[0].value ||
+                valueDown > modelDown[modelDown.length - 1].value)
+        {
+            activeModelNumDown = 0;
+            _persentDown = 0;
+            colorDown = Controls.Theme.colors.disabled;
+            return;
+        }
+
         _persentDown = 0;
 
         for (var i = 1; i < modelDown.length; ++i) {
-            if (i < modelDown.length - 1 && valueDown > modelDown[i + 1].value) colorDown = modelDown[i].color;
-
             if (valueDown > modelDown[i].value) {
                 _persentDown += modelDown[i].percentage;
             }
             else {
                 colorDown = modelDown[i].color;
                 activeModelNumDown = i;
+
                 _persentDown += Math.abs(modelDown[i].percentage *
                                     (valueDown - modelDown[i - 1].value) / (modelDown[i].value - modelDown[i - 1].value));
+
                 break;
             }
         }
@@ -100,7 +116,7 @@ Item {
                     anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeaterUp.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: index == root.activeModelNumUp ? modelData.color : "transparent"
+                    color: (index != 0 && index == root.activeModelNumUp) ? modelData.color : "transparent"
                     border.width: 1
                     border.color: index == 0 ? "transparent" : modelData.color
                 }
@@ -134,7 +150,7 @@ Item {
                     anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeaterDown.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: index == root.activeModelNumDown ? modelData.color : "transparent"
+                    color: (index != 0 && index == root.activeModelNumDown) ? modelData.color : "transparent"
                     border.width: 1
                     border.color: index == 0 ? "transparent" : modelData.color
                 }
@@ -145,6 +161,7 @@ Item {
 
 
     Controls.ColoredIcon {
+        visible: activeModelNumUp != 0
         id: tickUp
         x: _persentUp / 100 * root.width - width / 2
         anchors.verticalCenter: parent.top

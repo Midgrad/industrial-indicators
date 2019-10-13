@@ -12,7 +12,7 @@ Item {
     property int spacing: 1
     property color color: Theme.textColor
 
-    property int activeModelNum: 1
+    property int activeModelNum: 0
 
     property alias model: repeater.model
 
@@ -23,12 +23,19 @@ Item {
     onValueChanged: recalculate()
 
     function recalculate() {
-        if (!model || model.length < 2) return;
+        if (!model || model.length < 2 ||
+                value < model[0].value ||
+                value > model[model.length - 1].value)
+        {
+            activeModelNum = 0;
+            _persent = 0;
+            color = Controls.Theme.colors.disabled;
+            return;
+        }
+
         _persent = 0;
 
         for (var i = 1; i < model.length; ++i) {
-            if (i < model.length - 1 && value > model[i + 1].value) color = model[i].color;
-
             if (value > model[i].value) {
                 _persent += model[i].percentage;
             }
@@ -68,15 +75,16 @@ Item {
                     anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeater.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: index == root.activeModelNum ? modelData.color : "transparent"
+                    color: (index != 0 && index == root.activeModelNumDown) ? modelData.color : "transparent"
                     border.width: 1
-                    border.color: modelData.color
+                    border.color: index == 0 ? "transparent" : modelData.color
                 }
             }
         }
     }
 
     Controls.ColoredIcon {
+        visible: activeModelNumUp != 0
         id: tick
         x: _persent / 100 * root.width - width / 2
         anchors.verticalCenter: parent.verticalCenter
