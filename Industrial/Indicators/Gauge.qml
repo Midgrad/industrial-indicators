@@ -75,7 +75,7 @@ Item {
                     anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeater.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: (index != 0 && index == root.activeModelNumDown) ? modelData.color : "transparent"
+                    color: (index != 0 && index == root.activeModelNum) ? modelData.color : "transparent"
                     border.width: 1
                     border.color: index == 0 ? "transparent" : modelData.color
                 }
@@ -84,7 +84,7 @@ Item {
     }
 
     Controls.ColoredIcon {
-        visible: activeModelNumUp != 0
+        visible: activeModelNum != 0
         id: tick
         x: _persent / 100 * root.width - width / 2
         anchors.verticalCenter: parent.verticalCenter
