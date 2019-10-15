@@ -32,28 +32,29 @@ Item {
 
 
     function recalculateUp() {
-        if (!modelUp || modelUp.length < 1) return;
+        if (!modelUp || modelUp.length < 2 ||
+                valueUp < modelUp[0].value ||
+                valueUp > modelUp[modelUp.length - 1].value)
+        {
+            activeModelNumUp = 0;
+            _persentUp = 0;
+            colorUp = Controls.Theme.colors.disabled;
+            return;
+        }
+
         _persentUp = 0;
 
-        for (var i = 0; i < modelUp.length; ++i) {
-            if (i < modelUp.length - 1 && valueUp > modelUp[i + 1].value) colorUp = modelUp[i].color;
-
+        for (var i = 1; i < modelUp.length; ++i) {
             if (valueUp > modelUp[i].value) {
                 _persentUp += modelUp[i].percentage;
             }
             else {
                 colorUp = modelUp[i].color;
                 activeModelNumUp = i;
-                if (i == 0)
-                {
-                    _persentUp += Math.abs((modelUp[i].percentage) *
-                                         (valueUp - 0) / (modelUp[i].value - 0));
-                }
-                else
-                {
-                    _persentUp += Math.abs(modelUp[i].percentage *
-                                        (valueUp - modelUp[i - 1].value) / (modelUp[i].value - modelUp[i - 1].value));
-                }
+
+                _persentUp += Math.abs(modelUp[i].percentage *
+                                    (valueUp - modelUp[i - 1].value) / (modelUp[i].value - modelUp[i - 1].value));
+
                 break;
             }
         }
@@ -61,28 +62,29 @@ Item {
 
 
     function recalculateDown() {
-        if (!modelDown || modelDown.length < 1) return;
+        if (!modelDown || modelDown.length < 2 ||
+                valueDown < modelDown[0].value ||
+                valueDown > modelDown[modelDown.length - 1].value)
+        {
+            activeModelNumDown = 0;
+            _persentDown = 0;
+            colorDown = Controls.Theme.colors.disabled;
+            return;
+        }
+
         _persentDown = 0;
 
-        for (var i = 0; i < modelDown.length; ++i) {
-            if (i < modelDown.length - 1 && valueDown > modelDown[i + 1].value) colorDown = modelDown[i].color;
-
+        for (var i = 1; i < modelDown.length; ++i) {
             if (valueDown > modelDown[i].value) {
                 _persentDown += modelDown[i].percentage;
             }
             else {
                 colorDown = modelDown[i].color;
                 activeModelNumDown = i;
-                if (i == 0)
-                {
-                    _persentDown += Math.abs((modelDown[i].percentage) *
-                                         (valueDown - 0) / (modelDown[i].value - 0));
-                }
-                else
-                {
-                    _persentDown += Math.abs(modelDown[i].percentage *
-                                        (valueDown - modelDown[i - 1].value) / (modelDown[i].value - modelDown[i - 1].value));
-                }
+
+                _persentDown += Math.abs(modelDown[i].percentage *
+                                    (valueDown - modelDown[i - 1].value) / (modelDown[i].value - modelDown[i - 1].value));
+
                 break;
             }
         }
@@ -95,6 +97,7 @@ Item {
         Repeater {
             id: repeaterUp
             model: [
+                {value: 0},
                 { percentage: 10, value: 10, color: Theme.dangerColor },
                 { percentage: 20, value: 30, color: Theme.cautionColor },
                 { percentage: 40, value: 70, color: Theme.positiveColor },
@@ -104,18 +107,18 @@ Item {
 
             Item {
                 width: root.width * modelData.percentage / 100
-                height: root.height / 4
+                height: root.height / 3
                 anchors.bottom: parent.verticalCenter
                 clip: true
 
                 Rectangle {
                     anchors.fill: parent
-                    anchors.leftMargin: index == 0 ? 0 : -radius
+                    anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeaterUp.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: index == root.activeModelNumUp ? modelData.color : "transparent"
+                    color: (index != 0 && index == root.activeModelNumUp) ? modelData.color : "transparent"
                     border.width: 1
-                    border.color: modelData.color
+                    border.color: index == 0 ? "transparent" : modelData.color
                 }
             }
         }
@@ -128,6 +131,7 @@ Item {
         Repeater {
             id: repeaterDown
             model: [
+                {value: 0},
                 { percentage: 10, value: 10, color: Theme.dangerColor },
                 { percentage: 20, value: 30, color: Theme.cautionColor },
                 { percentage: 40, value: 70, color: Theme.positiveColor },
@@ -137,18 +141,18 @@ Item {
 
             Item {
                 width: root.width * modelData.percentage / 100
-                height: root.height / 4
+                height: root.height / 3
                 anchors.top: parent.verticalCenter
                 clip: true
 
                 Rectangle {
                     anchors.fill: parent
-                    anchors.leftMargin: index == 0 ? 0 : -radius
+                    anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeaterDown.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: index == root.activeModelNumDown ? modelData.color : "transparent"
+                    color: (index != 0 && index == root.activeModelNumDown) ? modelData.color : "transparent"
                     border.width: 1
-                    border.color: modelData.color
+                    border.color: index == 0 ? "transparent" : modelData.color
                 }
             }
         }
@@ -157,6 +161,7 @@ Item {
 
 
     Controls.ColoredIcon {
+        visible: activeModelNumUp != 0
         id: tickUp
         x: _persentUp / 100 * root.width - width / 2
         anchors.verticalCenter: parent.top

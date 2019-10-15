@@ -12,7 +12,7 @@ Item {
     property int spacing: 1
     property color color: Theme.textColor
 
-    property int activeModelNum: 1
+    property int activeModelNum: 0
 
     property alias model: repeater.model
 
@@ -23,28 +23,27 @@ Item {
     onValueChanged: recalculate()
 
     function recalculate() {
-        if (!model || model.length < 1) return;
+        if (!model || model.length < 2 ||
+                value < model[0].value ||
+                value > model[model.length - 1].value)
+        {
+            activeModelNum = 0;
+            _persent = 0;
+            color = Controls.Theme.colors.disabled;
+            return;
+        }
+
         _persent = 0;
 
-        for (var i = 0; i < model.length; ++i) {
-            if (i < model.length - 1 && value > model[i + 1].value) color = model[i].color;
-
+        for (var i = 1; i < model.length; ++i) {
             if (value > model[i].value) {
                 _persent += model[i].percentage;
             }
             else {
                 color = model[i].color;
                 activeModelNum = i;
-                if (i == 0)
-                {
-                    _persent += Math.abs((model[i].percentage) *
-                                         (value - 0) / (model[i].value - 0));
-                }
-                else
-                {
-                    _persent += Math.abs(model[i].percentage *
-                                        (value - model[i - 1].value) / (model[i].value - model[i - 1].value));
-                }
+                _persent += Math.abs(model[i].percentage *
+                                    (value - model[i - 1].value) / (model[i].value - model[i - 1].value));
                 break;
             }
         }
@@ -57,6 +56,7 @@ Item {
         Repeater {
             id: repeater
             model: [
+                {value: 0},
                 { percentage: 10, value: 10, color: Theme.dangerColor },
                 { percentage: 20, value: 30, color: Theme.cautionColor },
                 { percentage: 40, value: 70, color: Theme.positiveColor },
@@ -72,18 +72,19 @@ Item {
 
                 Rectangle {
                     anchors.fill: parent
-                    anchors.leftMargin: index == 0 ? 0 : -radius
+                    anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeater.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: index == root.activeModelNum ? modelData.color : "transparent"
+                    color: (index != 0 && index == root.activeModelNum) ? modelData.color : "transparent"
                     border.width: 1
-                    border.color: modelData.color
+                    border.color: index == 0 ? "transparent" : modelData.color
                 }
             }
         }
     }
 
     Controls.ColoredIcon {
+        visible: activeModelNum != 0
         id: tick
         x: _persent / 100 * root.width - width / 2
         anchors.verticalCenter: parent.verticalCenter
