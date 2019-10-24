@@ -1,15 +1,14 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import Industrial.Indicators 1.0
-import Industrial.Controls 1.0 as Controls
 
 PercentageIndicator {
     id: root
 
-    implicitWidth: Controls.Theme.baseSize
+    implicitWidth: Theme.baseSize
     implicitHeight: width
 
-    Controls.ColoredIcon {
+    Image {
         anchors.fill: parent
         color: root.color
         source: "qrc:/icons/ind_battery.svg"

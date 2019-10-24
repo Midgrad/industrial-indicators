@@ -1,5 +1,4 @@
 import QtQuick 2.6
-import Industrial.Controls 1.0 as Controls
 
 OperationalItem {
     id: root
@@ -30,17 +29,17 @@ OperationalItem {
     property color hatchColor: Theme.dangerColor
 
     function mapToRange(val) {
-        return Controls.Helper.mapToRange(val, minValue, maxValue, height);
+        return Helper.mapToRange(val, minValue, maxValue, height);
     }
 
     function mapFromRange(pos) {
-        return Controls.Helper.mapFromRange(pos, minValue, maxValue, height);
+        return Helper.mapFromRange(pos, minValue, maxValue, height);
     }
 
     implicitWidth: label.implicitWidth + tickMajorSize * 2
     clip: true
 
-    Controls.Hatch {
+    Hatch {
         id: hatch
         anchors.left: parent.left
         anchors.leftMargin: mirrored ? 10 : 0
@@ -98,7 +97,7 @@ OperationalItem {
         color: Theme.activeColor
     }
 
-    Controls.ColoredIcon {
+    Image {
         anchors.right: mirrored ? undefined : root.right
         anchors.left: mirrored ? root.left : undefined
         y: label.y

@@ -31,7 +31,7 @@ Item {
 
             ctx.clearRect(0, 0, width, height);
 
-            var offset = Controls.Helper.mapToRange(pitch, minPitch, maxPitch, effectiveHeight);
+            var offset = Helper.mapToRange(pitch, minPitch, maxPitch, effectiveHeight);
 
             ctx.lineWidth = markWidth;
             ctx.strokeStyle = markColor;

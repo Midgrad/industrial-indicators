@@ -1,6 +1,5 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
-import Industrial.Controls 1.0 as Controls
 
 Item {
     id: root
@@ -50,7 +49,7 @@ Item {
         }
 
         Rectangle {
-            x: Controls.Helper.mapToRange(modelData, minX, maxX, root.width)
+            x: Helper.mapToRange(modelData, minX, maxX, root.width)
             y: (parent.height - height) / 2
             height: root.height * tickFactor
             width: 1
@@ -70,7 +69,7 @@ Item {
         }
 
         Rectangle {
-            y: Controls.Helper.mapToRange(modelData, minY, maxY, root.height)
+            y: Helper.mapToRange(modelData, minY, maxY, root.height)
             x: (parent.width - width) / 2
             width: root.width * tickFactor
             height: 1
@@ -81,8 +80,8 @@ Item {
 
     Rectangle {
         id: feedback
-        x: Controls.Helper.mapToRange(feedbackX, minX, maxX, (root.width - feedback.width))
-        y: Controls.Helper.mapToRange(feedbackY, minY, maxY, (root.height - feedback.height))
+        x: Helper.mapToRange(feedbackX, minX, maxX, (root.width - feedback.width))
+        y: Helper.mapToRange(feedbackY, minY, maxY, (root.height - feedback.height))
         height: root.height * handleFactor
         width: height
         radius: width / 2
@@ -100,8 +99,8 @@ Item {
         color: "transparent"
         border.color: root.color
         border.width: 2
-        onXChanged: xDeviation(Controls.Helper.mapFromRange(handle.x, minX, maxX, (root.width - handle.width)))
-        onYChanged: yDeviation(Controls.Helper.mapFromRange(handle.y, minY, maxY, (root.height - handle.height)))
+        onXChanged: xDeviation(Helper.mapFromRange(handle.x, minX, maxX, (root.width - handle.width)))
+        onYChanged: yDeviation(Helper.mapFromRange(handle.y, minY, maxY, (root.height - handle.height)))
     }
 
     MouseArea {

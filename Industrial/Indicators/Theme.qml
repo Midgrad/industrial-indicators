@@ -4,6 +4,7 @@ import QtQuick 2.6
 QtObject {
     id: root
 
+    property int baseSize: 16
     property int fontSize: 14
     property int margins: 8
     property int padding: 4
