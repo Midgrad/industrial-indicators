@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
 OperationalItem {
     id: root
@@ -105,7 +106,7 @@ OperationalItem {
         height: label.height
         mirror: root.mirrored
         source: "qrc:/icons/ind_ladder_arrow.svg"
-        color: labelColor
+        //color: labelColor
     }
 
     ValueLabel {

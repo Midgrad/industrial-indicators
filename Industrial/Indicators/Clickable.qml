@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
+import Industrial.Indicators 1.0
 
 T.Button { // TODO: clickable
     id: control
@@ -11,61 +12,27 @@ T.Button { // TODO: clickable
     property bool leftCropped: false
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
-    property color color: control.flat ? "transparent" : Theme.colors.control
-    property color highlightColor: Theme.colors.highlight
-    property color selectionColor: Theme.colors.selection
+    property color color:  "transparent"
     property string tipText
 
-    property alias iconSource: content.iconSource
-    property alias iconColor: content.iconColor
-    property alias iconSize: content.iconSize
-    property alias textSize: content.textSize
-    property alias textColor: content.textColor
-    property alias radius: backgroundItem.radius
-    property alias contentWidth: content.width
-    property alias backgroundColor: backgroundItem.color
+    property alias iconSource: icon.source
+    property alias iconColor: icon.color
+    property alias iconSize: icon.width
+    property alias contentWidth: icon.width
 
-    implicitWidth: Math.max(implicitHeight, content.implicitWidth + control.padding * 2)
+    implicitWidth: Math.max(implicitHeight, icon.implicitWidth + control.padding * 2)
     implicitHeight: Theme.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
     padding: Theme.padding
     font.pixelSize: Theme.mainFontSize
 
-    background: BackgroundItem {
-        id: backgroundItem
-        hovered: control.hovered
-        flat: control.flat
-        radius: round ? Math.min(width, height) / 2 : Theme.rounding
-        topCropping: topCropped ? radius : 0
-        bottomCropping: bottomCropped ? radius : 0
-        leftCropping: leftCropped ? radius : 0
-        rightCropping: rightCropped ? radius : 0
-        borderColor: control.activeFocus ? Theme.colors.highlight : "transparent"
-        color: {
-            if (control.pressed || control.pressedImpl) return control.highlightColor;
-            if (control.highlighted || control.checked) return control.selectionColor;
-            return control.color;
-        }
 
-        Hatch {
-            anchors.fill: parent
-            color: Theme.colors.raised
-            visible: control.hatched
-        }
-    }
 
-    contentItem: ContentItem {
-        id: content
+    contentItem: Image {
+        id: icon
         anchors.fill: parent
         anchors.margins: control.padding
-        text: control.text
-        font: control.font
-        textColor: {
-            if (control.pressed || control.pressedImpl) return Theme.colors.highlightedText;
-            if (control.highlighted || control.checked) return Theme.colors.selectedText;
-            return Theme.colors.controlText;
-        }
     }
 
 }

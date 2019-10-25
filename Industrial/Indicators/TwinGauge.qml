@@ -37,7 +37,7 @@ Item {
         {
             activeModelNumUp = 0;
             _persentUp = 0;
-            colorUp = Controls.Theme.colors.disabled;
+            colorUp = Theme.disabledColor;
             return;
         }
 
@@ -67,7 +67,7 @@ Item {
         {
             activeModelNumDown = 0;
             _persentDown = 0;
-            colorDown = Controls.Theme.colors.disabled;
+            colorDown = Theme.disabledColor;
             return;
         }
 

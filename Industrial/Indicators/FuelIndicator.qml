@@ -6,7 +6,7 @@ PercentageIndicator {
     id: root
 
     implicitWidth: height + label.width
-    implicitHeight: Controls.Theme.baseSize
+    implicitHeight: Theme.baseSize
 
     Image {
         anchors.left: parent.left

@@ -28,7 +28,7 @@ Item {
         {
             activeModelNum = 0;
             _persent = 0;
-            color = Controls.Theme.colors.disabled;
+            color = Theme.disabledColor;
             return;
         }
 
