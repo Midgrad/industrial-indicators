@@ -44,7 +44,7 @@ Item {
         anchors.fill: parent
         rotation: Math.max(Math.min(-roll, maxRoll), minRoll)
 
-        Image {
+        ColoredIcon {
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             width: arrowSize

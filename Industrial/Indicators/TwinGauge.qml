@@ -159,7 +159,7 @@ Item {
 
 
 
-    Image {
+    ColoredIcon {
         visible: activeModelNumUp != 0
         id: tickUp
         x: _persentUp / 100 * root.width - width / 2
@@ -170,7 +170,7 @@ Item {
         color: Theme.backgroundColor
 
 
-        Image {
+        ColoredIcon {
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source
@@ -179,7 +179,7 @@ Item {
     }
 
 
-    Image {
+    ColoredIcon {
         id: tickDown
         x: _persentDown / 100 * root.width - width / 2
         anchors.verticalCenter: parent.bottom
@@ -189,7 +189,7 @@ Item {
         color: Theme.backgroundColor
         rotation: 180
 
-        Image {
+        ColoredIcon {
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source

@@ -42,7 +42,7 @@
         <file>Industrial/Indicators/helper.js</file>
         <file>Industrial/Indicators/Clickable.qml</file>
         <file>Industrial/Indicators/Hatch.qml</file>
-        <file>Industrial/Indicators/Image.qml</file>
         <file>Industrial/Indicators/Text.qml</file>
+        <file>Industrial/Indicators/ColoredIcon.qml</file>
     </qresource>
 </RCC>

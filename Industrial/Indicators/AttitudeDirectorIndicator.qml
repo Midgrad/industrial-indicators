@@ -82,10 +82,7 @@ AttitudeIndicator {
         anchors.horizontalCenter: pitchScale.horizontalCenter
         iconSource: "qrc:/icons/ind_arrow_up.svg"
         iconColor: Theme.backgroundColor
-        flat: true
-        round: true
         visible: inputEnabled
-        autoRepeat: true
         onClicked: addPitch(-0.05)
     }
 
@@ -94,10 +91,7 @@ AttitudeIndicator {
         anchors.horizontalCenter: pitchScale.horizontalCenter
         iconSource: "qrc:/icons/ind_arrow_down.svg"
         iconColor: Theme.backgroundColor
-        flat: true
-        round: true
         visible: inputEnabled
-        autoRepeat: true
         onClicked: addPitch(0.05)
     }
 
@@ -107,10 +101,7 @@ AttitudeIndicator {
         anchors.left: parent.left
         iconSource: "qrc:/icons/ind_bank_left.svg"
         iconColor: Theme.backgroundColor
-        flat: true
-        round: true
         visible: inputEnabled
-        autoRepeat: true
         onClicked: addRoll(-0.05)
     }
 
@@ -120,10 +111,7 @@ AttitudeIndicator {
         anchors.right: parent.right
         iconSource: "qrc:/icons/ind_bank_right.svg"
         iconColor: Theme.backgroundColor
-        flat: true
-        round: true
         visible: inputEnabled
-        autoRepeat: true
         onClicked: addRoll(0.05)
     }
 }

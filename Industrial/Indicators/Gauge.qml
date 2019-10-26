@@ -82,7 +82,7 @@ Item {
         }
     }
 
-    Image {
+    ColoredIcon {
         visible: activeModelNum != 0
         id: tick
         x: _persent / 100 * root.width - width / 2
@@ -92,7 +92,7 @@ Item {
         source: "qrc:/icons/ind_gauge_arrow.svg"
         color: Theme.backgroundColor
 
-        Image {
+        ColoredIcon {
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source

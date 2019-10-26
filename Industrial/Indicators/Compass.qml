@@ -55,7 +55,7 @@ OperationalItem {
         anchors.margins: textOffset + tickTextedSize
         rotation: heading - course
 
-        Image {
+        ColoredIcon {
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             width: arrowSize

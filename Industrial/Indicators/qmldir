@@ -42,6 +42,6 @@ Strobe 1.0 Strobe.qml
 Arrow 1.0 Arrow.qml
 
 Clickable 1.0 Clickable.qml
-Image 1.0 Image.qml
+ColoredIcon 1.0 ColoredIcon.qml
 Hatch 1.0 Hatch.qml
 Text 1.0 Text.qml

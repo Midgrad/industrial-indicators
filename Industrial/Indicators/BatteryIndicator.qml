@@ -8,7 +8,7 @@ PercentageIndicator {
     implicitWidth: Theme.baseSize
     implicitHeight: width
 
-    Image {
+    ColoredIcon {
         anchors.fill: parent
         color: root.color
         source: "qrc:/icons/ind_battery.svg"
