@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import QtGraphicalEffects 1.0
+import Industrial.Indicators 1.0
 
 
 Item {
