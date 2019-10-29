@@ -93,6 +93,8 @@ Item {
         color: Theme.backgroundColor
 
         ColoredIcon {
+            implicitWidth: Theme.baseSize
+            implicitHeight: Theme.baseSize
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source

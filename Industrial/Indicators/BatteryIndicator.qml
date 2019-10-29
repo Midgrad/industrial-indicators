@@ -5,12 +5,14 @@ import Industrial.Indicators 1.0
 PercentageIndicator {
     id: root
 
-    implicitWidth: Theme.baseSize
+    implicitWidth: Theme.baseSize*2
     implicitHeight: width
 
     ColoredIcon {
         anchors.fill: parent
         color: root.color
+        height: parent.height
+        width: height
         source: "qrc:/icons/ind_battery.svg"
     }
 

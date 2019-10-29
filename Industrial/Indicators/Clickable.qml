@@ -26,6 +26,10 @@ Item {
 
     ColoredIcon {
         id: icon
+        implicitWidth: Theme.baseSize
+        implicitHeight: Theme.baseSize
+        height: parent.height
+        width: height
         anchors.fill: parent
         anchors.margins: Theme.padding
     }

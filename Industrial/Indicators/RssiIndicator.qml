@@ -10,8 +10,8 @@ Item {
     property real rssi: minRssiValue
     property real minRssiValue: -120
 
-    implicitWidth: Theme.baseSize * 3
-    implicitHeight: Theme.baseSize
+    implicitWidth: Theme.baseSize * 6
+    implicitHeight: Theme.baseSize * 2
 
     Row {
         id: row
