@@ -1,6 +1,5 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
-import Industrial.Controls 1.0 as Controls
 
 Canvas {
     id: root
@@ -53,8 +52,8 @@ Canvas {
         }
         ctx.stroke();
 
-        var dx = Controls.Helper.mapToRange(deviationX, 0, sizeX, width / 2);
-        var dy = Controls.Helper.mapToRange(deviationY, 0, sizeY, height / 2);
+        var dx = Helper.mapToRange(deviationX, 0, sizeX, width / 2);
+        var dy = Helper.mapToRange(deviationY, 0, sizeY, height / 2);
 
         ctx.beginPath();
         ctx.moveTo(dx, -height * 0.5);

@@ -1,6 +1,5 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
-import Industrial.Controls 1.0 as Controls
 
 Item {
     id: root
@@ -11,8 +10,8 @@ Item {
     property real rssi: minRssiValue
     property real minRssiValue: -120
 
-    implicitWidth: Controls.Theme.baseSize * 3
-    implicitHeight: Controls.Theme.baseSize
+    implicitWidth: Theme.baseSize * 6
+    implicitHeight: Theme.baseSize * 2
 
     Row {
         id: row
@@ -29,7 +28,7 @@ Item {
                 width: (root.width / columns) - (root.width / columnToSpaceFactor)
                 height: (repeater.count - index) * root.height / (repeater.count + 1)
                 radius: 2
-                color: rssi != 0 && rssi >= Controls.Helper.mapToRange(index, 0, columns, minRssiValue) ?
+                color: rssi != 0 && rssi >= Helper.mapToRange(index, 0, columns, minRssiValue) ?
                            Theme.positiveColor : Theme.backgroundColor
             }
         }

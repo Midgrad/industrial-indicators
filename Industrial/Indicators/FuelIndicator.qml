@@ -1,15 +1,14 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import Industrial.Indicators 1.0
-import Industrial.Controls 1.0 as Controls
 
 PercentageIndicator {
     id: root
 
     implicitWidth: height + label.width
-    implicitHeight: Controls.Theme.baseSize
+    implicitHeight: Theme.baseSize*2
 
-    Controls.ColoredIcon {
+    ColoredIcon {
         anchors.left: parent.left
         height: parent.height
         width: height
@@ -17,7 +16,7 @@ PercentageIndicator {
         source: "qrc:/icons/ind_fuel.svg"
     }
 
-    Controls.Label {
+    Text {
         id: label
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter

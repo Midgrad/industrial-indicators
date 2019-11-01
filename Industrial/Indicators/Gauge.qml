@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import Industrial.Indicators 1.0
-import Industrial.Controls 1.0 as Controls
 
 Item {
     id: root
@@ -16,8 +15,8 @@ Item {
 
     property alias model: repeater.model
 
-    implicitWidth: Controls.Theme.baseSize * 4
-    implicitHeight: Controls.Theme.baseSize * 0.5
+    implicitWidth: Theme.baseSize * 4
+    implicitHeight: Theme.baseSize * 0.5
 
     onModelChanged: recalculate()
     onValueChanged: recalculate()
@@ -29,7 +28,7 @@ Item {
         {
             activeModelNum = 0;
             _persent = 0;
-            color = Controls.Theme.colors.disabled;
+            color = Theme.disabledColor;
             return;
         }
 
@@ -83,7 +82,7 @@ Item {
         }
     }
 
-    Controls.ColoredIcon {
+    ColoredIcon {
         visible: activeModelNum != 0
         id: tick
         x: _persent / 100 * root.width - width / 2
@@ -93,7 +92,9 @@ Item {
         source: "qrc:/icons/ind_gauge_arrow.svg"
         color: Theme.backgroundColor
 
-        Controls.ColoredIcon {
+        ColoredIcon {
+            implicitWidth: Theme.baseSize
+            implicitHeight: Theme.baseSize
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source

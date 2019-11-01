@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import Industrial.Indicators 1.0
-import Industrial.Controls 1.0 as Controls
 
 Item {
     id: root
@@ -21,8 +20,8 @@ Item {
     property alias modelUp: repeaterUp.model
     property alias modelDown: repeaterDown.model
 
-    implicitWidth: Controls.Theme.baseSize * 4
-    implicitHeight: Controls.Theme.baseSize * 0.75
+    implicitWidth: Theme.baseSize * 4
+    implicitHeight: Theme.baseSize * 0.75
 
     onModelUpChanged: recalculateUp()
     onValueUpChanged: recalculateUp()
@@ -38,7 +37,7 @@ Item {
         {
             activeModelNumUp = 0;
             _persentUp = 0;
-            colorUp = Controls.Theme.colors.disabled;
+            colorUp = Theme.disabledColor;
             return;
         }
 
@@ -68,7 +67,7 @@ Item {
         {
             activeModelNumDown = 0;
             _persentDown = 0;
-            colorDown = Controls.Theme.colors.disabled;
+            colorDown = Theme.disabledColor;
             return;
         }
 
@@ -160,7 +159,7 @@ Item {
 
 
 
-    Controls.ColoredIcon {
+    ColoredIcon {
         visible: activeModelNumUp != 0
         id: tickUp
         x: _persentUp / 100 * root.width - width / 2
@@ -171,7 +170,7 @@ Item {
         color: Theme.backgroundColor
 
 
-        Controls.ColoredIcon {
+        ColoredIcon {
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source
@@ -180,7 +179,7 @@ Item {
     }
 
 
-    Controls.ColoredIcon {
+    ColoredIcon {
         id: tickDown
         x: _persentDown / 100 * root.width - width / 2
         anchors.verticalCenter: parent.bottom
@@ -190,7 +189,7 @@ Item {
         color: Theme.backgroundColor
         rotation: 180
 
-        Controls.ColoredIcon {
+        ColoredIcon {
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source

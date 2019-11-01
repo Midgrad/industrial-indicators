@@ -1,6 +1,5 @@
 ﻿import QtQuick 2.6
 import Industrial.Indicators 1.0
-import Industrial.Controls 1.0 as Controls
 
 AttitudeIndicator {
     id: fd
@@ -23,7 +22,7 @@ AttitudeIndicator {
     Behavior on desiredPitch { PropertyAnimation { duration: 100 } }
     Behavior on desiredRoll { PropertyAnimation { duration: 100 } }
 
-    effectiveHeight: height - Controls.Theme.baseSize
+    effectiveHeight: height - Theme.baseSize
 
     RollScale {
         id: rollScale
@@ -49,7 +48,7 @@ AttitudeIndicator {
         color: operational ? Theme.textColor : Theme.dangerColor
     }
 
-    Controls.Label {
+    Text {
         anchors.centerIn: parent
         anchors.verticalCenterOffset: -height
         text: qsTr("DISARMED")
@@ -78,53 +77,41 @@ AttitudeIndicator {
         markWidth: 3
     }
 
-    Controls.Button {
+    Clickable {
         anchors.top: pitchScale.top
         anchors.horizontalCenter: pitchScale.horizontalCenter
         iconSource: "qrc:/icons/ind_arrow_up.svg"
         iconColor: Theme.backgroundColor
-        flat: true
-        round: true
         visible: inputEnabled
-        autoRepeat: true
         onClicked: addPitch(-0.05)
     }
 
-    Controls.Button {
+    Clickable {
         anchors.bottom: pitchScale.bottom
         anchors.horizontalCenter: pitchScale.horizontalCenter
         iconSource: "qrc:/icons/ind_arrow_down.svg"
         iconColor: Theme.backgroundColor
-        flat: true
-        round: true
         visible: inputEnabled
-        autoRepeat: true
         onClicked: addPitch(0.05)
     }
 
-    Controls.Button {
+    Clickable {
         anchors.top: parent.top
         anchors.topMargin: (fd.height - fd.sideHeight) / 2
         anchors.left: parent.left
         iconSource: "qrc:/icons/ind_bank_left.svg"
         iconColor: Theme.backgroundColor
-        flat: true
-        round: true
         visible: inputEnabled
-        autoRepeat: true
         onClicked: addRoll(-0.05)
     }
 
-    Controls.Button {
+    Clickable {
         anchors.top: parent.top
         anchors.topMargin: (fd.height - fd.sideHeight) / 2
         anchors.right: parent.right
         iconSource: "qrc:/icons/ind_bank_right.svg"
         iconColor: Theme.backgroundColor
-        flat: true
-        round: true
         visible: inputEnabled
-        autoRepeat: true
         onClicked: addRoll(0.05)
     }
 }

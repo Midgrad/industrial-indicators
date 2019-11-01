@@ -1,6 +1,5 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
-import Industrial.Controls 1.0 as Controls
 
 OperationalItem {
     id: root
@@ -56,7 +55,7 @@ OperationalItem {
         anchors.margins: textOffset + tickTextedSize
         rotation: heading - course
 
-        Controls.ColoredIcon {
+        ColoredIcon {
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             width: arrowSize

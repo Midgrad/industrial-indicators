@@ -1,8 +1,6 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
 
-import Industrial.Controls 1.0 as Controls
-
 Item {
     id: root
 
@@ -10,7 +8,7 @@ Item {
     property real caution: 0.5
     property real danger: 0.8
 
-    implicitWidth: Controls.Theme.baseSize
+    implicitWidth: Theme.baseSize
     implicitHeight: width
 
     Row {

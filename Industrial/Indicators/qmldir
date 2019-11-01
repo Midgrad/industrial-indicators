@@ -1,5 +1,7 @@
 module Industrial.Indicators
 
+Helper 1.0 helper.js
+
 singleton Theme 1.0 Theme.qml
 OperationalItem 1.0 OperationalItem.qml
 OpacityBorder 1.0 OpacityBorder.qml
@@ -38,3 +40,8 @@ Joystick 1.0 Joystick.qml
 Cross 1.0 Cross.qml
 Strobe 1.0 Strobe.qml
 Arrow 1.0 Arrow.qml
+
+Clickable 1.0 Clickable.qml
+ColoredIcon 1.0 ColoredIcon.qml
+Hatch 1.0 Hatch.qml
+Text 1.0 Text.qml

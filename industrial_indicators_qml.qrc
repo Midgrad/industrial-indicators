@@ -39,5 +39,10 @@
         <file>Industrial/Indicators/Strobe.qml</file>
         <file>Industrial/Indicators/Arrow.qml</file>
         <file>Industrial/Indicators/TwinGauge.qml</file>
+        <file>Industrial/Indicators/helper.js</file>
+        <file>Industrial/Indicators/Clickable.qml</file>
+        <file>Industrial/Indicators/Hatch.qml</file>
+        <file>Industrial/Indicators/Text.qml</file>
+        <file>Industrial/Indicators/ColoredIcon.qml</file>
     </qresource>
 </RCC>
