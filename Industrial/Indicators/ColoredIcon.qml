@@ -10,8 +10,11 @@ Item {
     property alias mirror: image.mirror
     property alias color: overlay.color
 
-    implicitWidth: image.implicitWidth
-    implicitHeight: image.implicitHeight
+    //implicitWidth: image.implicitWidth
+    implicitWidth: image.sourceSize.width
+    implicitHeight: image.sourceSize.height
+
+    //implicitHeight: image.implicitHeight
 
     Image {
         id: image
