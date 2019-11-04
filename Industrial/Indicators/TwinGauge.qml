@@ -21,7 +21,7 @@ Item {
     property alias modelDown: repeaterDown.model
 
     implicitWidth: Theme.baseSize * 4
-    implicitHeight: Theme.baseSize * 0.75
+    implicitHeight: Theme.baseSize * 1.5
 
     onModelUpChanged: recalculateUp()
     onValueUpChanged: recalculateUp()
@@ -164,13 +164,15 @@ Item {
         id: tickUp
         x: _persentUp / 100 * root.width - width / 2
         anchors.verticalCenter: parent.top
-        height: root.height
+        height: parent.height
         width: height
         source: "qrc:/icons/ind_gauge_arrow.svg"
         color: Theme.backgroundColor
 
 
         ColoredIcon {
+            implicitWidth: Theme.baseSize
+            implicitHeight: Theme.baseSize
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source
@@ -183,13 +185,15 @@ Item {
         id: tickDown
         x: _persentDown / 100 * root.width - width / 2
         anchors.verticalCenter: parent.bottom
-        height: root.height
+        height: parent.height
         width: height
         source: "qrc:/icons/ind_gauge_arrow.svg"
         color: Theme.backgroundColor
         rotation: 180
 
         ColoredIcon {
+            implicitWidth: Theme.baseSize
+            implicitHeight: Theme.baseSize
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source
