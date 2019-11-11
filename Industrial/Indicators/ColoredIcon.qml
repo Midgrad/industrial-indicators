@@ -9,12 +9,12 @@ Item {
     property alias source: image.source
     property alias mirror: image.mirror
     property alias color: overlay.color
+    rotation: mirror ? 180 : 0
 
-    //implicitWidth: image.implicitWidth
+
     implicitWidth: image.sourceSize.width
     implicitHeight: image.sourceSize.height
 
-    //implicitHeight: image.implicitHeight
 
     Image {
         id: image

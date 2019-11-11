@@ -8,7 +8,7 @@ Item {
     property real roll: 0.0
     property real effectiveHeight: height
 
-    property color markColor: Theme.backgroundColor
+    property color markColor: Theme.aiMarkColor
     property real markWidth: 2
 
     implicitHeight: width

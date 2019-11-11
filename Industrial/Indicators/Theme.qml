@@ -30,4 +30,8 @@ QtObject {
 
     property color trackColor: "#64adf6"
     property color missionColor: "#1ce9a5"
+
+    // air indicator
+    property color aiTextColor: "#ffffff"
+    property color aiMarkColor: "#1a2226"
 }
