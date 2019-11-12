@@ -45,7 +45,7 @@ AttitudeIndicator {
         maxPitch: pitchInverted ? fd.pitch + fd.maxPitch : fd.maxPitch
         pitchStep: fd.pitchStep
         opacity: enabled ? 1 : 0.33
-        color: operational ? Theme.textColor : Theme.dangerColor
+        color: operational ? Theme.aiTextColor : Theme.dangerColor
     }
 
     Text {
@@ -73,7 +73,7 @@ AttitudeIndicator {
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? 0 : -fd.pitch
         roll: rollInverted ? -fd.roll : 0
-        markColor: armed ? Theme.backgroundColor : Theme.dangerColor
+        markColor: armed ? Theme.aiMarkColor : Theme.dangerColor
         markWidth: 3
     }
 

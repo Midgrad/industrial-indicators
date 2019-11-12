@@ -65,7 +65,8 @@ OperationalItem {
         }
     }
 
-    Image {
+    ColoredIcon {
+        color: Theme.textColor
         anchors.fill: parent
         source: mark
         anchors.margins: centerOffset

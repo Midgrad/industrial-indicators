@@ -106,7 +106,7 @@ OperationalItem {
         height: label.height
         mirror: root.mirrored
         source: "qrc:/icons/ind_ladder_arrow.svg"
-        //color: labelColor
+        color: labelColor
     }
 
     ValueLabel {
