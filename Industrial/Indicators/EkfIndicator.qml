@@ -8,7 +8,7 @@ Item {
     property real caution: 0.5
     property real danger: 0.8
 
-    implicitWidth: Theme.baseSize
+    implicitWidth: Theme.baseSize * 2
     implicitHeight: width
 
     Row {
