@@ -9,6 +9,7 @@ Item {
     property real columnToSpaceFactor: 20
     property real rssi: minRssiValue
     property real minRssiValue: -120
+    property color inactiveColor: Theme.backgroundColor
 
     implicitWidth: Theme.baseSize * 6
     implicitHeight: Theme.baseSize * 2
@@ -29,7 +30,7 @@ Item {
                 height: (repeater.count - index) * root.height / (repeater.count + 1)
                 radius: 2
                 color: rssi != 0 && rssi >= Helper.mapToRange(index, 0, columns, minRssiValue) ?
-                           Theme.positiveColor : Theme.backgroundColor
+                           Theme.positiveColor : root.inactiveColor
             }
         }
     }

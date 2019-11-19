@@ -18,20 +18,20 @@ Canvas {
     onSizeXChanged: requestPaint()
     onSizeYChanged: requestPaint()
 
+    implicitWidth: height
     implicitHeight: width
     clip: true
 
     onPaint: {
+
         var ctx = root.getContext('2d');
 
         ctx.clearRect(0, 0, width, height);
 
-        ctx.save();
-
         ctx.strokeStyle = color;
+        ctx.save();
 
         ctx.translate(width / 2, height / 2);
-        ctx.save();
 
         ctx.lineWidth = 2;
         ctx.beginPath();
