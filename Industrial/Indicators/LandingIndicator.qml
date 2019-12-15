@@ -30,7 +30,6 @@ Canvas {
         ctx.clearRect(0, 0, width, height);
 
         ctx.strokeStyle = color;
-        console.log(color)
 
         ctx.save();
 

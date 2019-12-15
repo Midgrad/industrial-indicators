@@ -104,7 +104,7 @@ OperationalItem {
         y: label.y
         width: tickMajorSize
         height: label.height
-        mirror: root.mirrored
+        rotation:  mirrored ? 180 : 0
         source: "qrc:/icons/ind_ladder_arrow.svg"
         color: labelColor
     }
