@@ -17,6 +17,7 @@ Canvas {
     onDeviationYChanged: requestPaint()
     onSizeXChanged: requestPaint()
     onSizeYChanged: requestPaint()
+    onColorChanged: requestPaint()
 
     implicitWidth: height
     implicitHeight: width
@@ -29,6 +30,7 @@ Canvas {
         ctx.clearRect(0, 0, width, height);
 
         ctx.strokeStyle = color;
+
         ctx.save();
 
         ctx.translate(width / 2, height / 2);
