@@ -36,7 +36,7 @@ OperationalItem {
     Item {
         id: compassScale
         anchors.fill: parent
-        rotation: -heading
+        rotation: -safeHeading
 
         Repeater {
             model: 360 / tickFactor
@@ -53,7 +53,7 @@ OperationalItem {
     Item {
         anchors.fill: parent
         anchors.margins: textOffset + tickTextedSize
-        rotation: heading - course
+        rotation: safeHeading - course
 
         ColoredIcon {
             anchors.top: parent.top
