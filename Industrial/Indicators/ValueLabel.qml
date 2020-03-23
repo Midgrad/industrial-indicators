@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
+import QtQuick.Controls 2.2 as T
 
 OperationalItem {
     id: root
@@ -16,31 +17,56 @@ OperationalItem {
 
     property alias prefix: prefixText.text
     property alias valueText: valueText.text
+    property alias toolTipText: toolTip.text
     property alias prefixFont: prefixText.font
     property alias valueFont: valueText.font
 
     implicitWidth: Math.max(prefixText.implicitWidth, valueText.implicitWidth)
     implicitHeight: (prefix.length > 0 ? prefixText.implicitHeight * 0.75 : 0) + valueText.implicitHeight
 
-    Text {
-        id: prefixText
-        anchors.top: parent.top
-        width: root.width
-        horizontalAlignment: Text.AlignHCenter
-        color: root.color
-        font.pixelSize: Theme.fontSize
-        visible: prefix.length > 0
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        hoverEnabled: true
+
+        Text {
+            id: prefixText
+            anchors.top: parent.top
+            width: root.width
+            horizontalAlignment: Text.AlignHCenter
+            color: root.color
+            font.pixelSize: Theme.fontSize
+            visible: prefix.length > 0
+        }
+
+        Text {
+            id: valueText
+            anchors.bottom: parent.bottom
+            width: root.width
+            horizontalAlignment: Text.AlignHCenter
+            color: root.color
+            font.bold: true
+            font.pixelSize: Theme.fontSize
+            text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
+        }
     }
 
-    Text {
-        id: valueText
-        anchors.bottom: parent.bottom
-        width: root.width
-        horizontalAlignment: Text.AlignHCenter
-        color: root.color
-        font.bold: true
-        font.pixelSize: Theme.fontSize
-        text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
+
+    T.ToolTip {
+        id: toolTip
+        visible: text ? mouseArea.containsMouse : false
+
+        contentItem: Text {
+            text: toolTip.text
+            font: toolTip.font
+            color: Theme.tipText
+            horizontalAlignment: Qt.AlignHCenter
+        }
+
+        background: Rectangle {
+            color: Theme.tip
+            radius: 3
+        }
     }
 }
 
