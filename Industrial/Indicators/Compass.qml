@@ -11,7 +11,7 @@ OperationalItem {
 
     property color courseColor: Theme.positiveColor
     property color headingColor: {
-        if (!enabled) return Theme.backgroundColor;
+        if (!enabled) return Theme.disabledColor;
         if (!operational) return Theme.dangerColor;
         return Theme.textColor;
     }
