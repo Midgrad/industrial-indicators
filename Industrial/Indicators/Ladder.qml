@@ -25,9 +25,9 @@ OperationalItem {
     property string prefix
     property string suffix
 
-    property color scaleColor: operational ? Theme.textColor : Theme.dangerColor
-    property color labelColor: operational ? Theme.textColor : Theme.dangerColor
-    property color hatchColor: Theme.dangerColor
+    property color scaleColor: enabled ? (operational ? Theme.textColor : Theme.dangerColor) : Theme.disabledColor
+    property color labelColor: enabled ? (operational ? Theme.textColor : Theme.dangerColor) : Theme.disabledColor
+    property color hatchColor: enabled ? Theme.dangerColor : Theme.disabledColor
 
     function mapToRange(val) {
         return Helper.mapToRange(val, minValue, maxValue, height);

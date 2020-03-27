@@ -18,6 +18,6 @@ Item {
         if (percentage > 0)
             return Theme.dangerColor;
 
-        return Theme.backgroundColor;
+        return Theme.disabledColor;
     }
 }
