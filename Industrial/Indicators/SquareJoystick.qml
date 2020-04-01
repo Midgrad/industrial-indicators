@@ -4,16 +4,15 @@ import Industrial.Indicators 1.0
 Item {
     id: root
 
-    property color color: enabled ? Theme.activeColor : Theme.disabledColor
-    property real tickFactor: 0.1
+    property color color: enabled ? Theme.textColor : Theme.disabledColor
     property real opacityFactor: 0.75
+    property real handleFactor: 0.33
 
     property real minX: -1
     property real maxX: 1
     property real minY: -1
     property real maxY: 1
-    property real ticksX: 10
-    property real ticksY: 10
+    property real ticksY: 5
     property real feedbackX: (maxX - minX) / 2
     property real feedbackY: (maxY - minY) / 2
 
@@ -46,70 +45,97 @@ Item {
         width: root.width / 2 / Math.sin(Math.PI / 4)
         color: "transparent"
         border.color: root.color
-        border.width: 2
+        border.width: 3
     }
 
     Rectangle {
         id: horizontalStick
         x: joystickSquare.x
         y: handle.y
-        height: joystickSquare.height / 3
+        height: joystickSquare.height * handleFactor
         radius: height / 2
         width: joystickSquare.width
         color: "transparent"
         border.color: root.color
-        border.width: 2
-    }
-
-    Repeater {
-        model: {
-            var ticks = [];
-            if (minX >= maxX) return ticks;
-            for (var i = minX; i <= maxX; i += (maxX - minX) / ticksX) {
-                ticks.push(i);
-            }
-            return ticks;
-        }
-
-        Rectangle {
-            x: joystickSquare.x + Helper.mapToRange(modelData, minX, maxX, joystickSquare.width)
-            y: horizontalStick.y + horizontalStick.height / 2  - height / 2
-            height: joystickSquare.height * tickFactor
-            width: 1
-            color: root.color
-            opacity: opacityFactor - Math.abs(modelData / (maxX - minX))
-        }
+        border.width: 3
     }
 
     Repeater {
         model: {
             var ticks = [];
             if (minY >= maxY) return ticks;
-            for (var i = minY; i <= maxY; i += (maxY - minY) / ticksY) {
-                ticks.push(i);
+            var middle = (maxY + minY) / 2;
+            var step = (maxY - minY) / 2 / ticksY;
+            var maxHeight = (root.width / 2 - joystickSquare.width / 2) * 0.8
+            for(var i = 0; i <= ticksY; i+=1 ) {
+                if(i === 0) {
+                    ticks.push([middle, maxHeight, 3]);
+                }
+                else {
+                    ticks.push([middle + step * i, maxHeight * (ticksY - i) / ticksY, 2]);
+                    ticks.push([middle - step * i, maxHeight * (ticksY - i) / ticksY, 2]);
+                }
             }
             return ticks;
         }
 
-        Rectangle {
-            y: joystickSquare.y + Helper.mapToRange(modelData, minY, maxY, joystickSquare.height)
-            x: (parent.width - width) / 2
-            width: joystickSquare.height * tickFactor
-            height: 1
-            color: root.color
-            opacity: opacityFactor - Math.abs(modelData / (maxY - minY))
+        Item {
+            Rectangle {
+                y: joystickSquare.y + Helper.mapToRange(modelData[0], minY, maxY, joystickSquare.height)
+                x: joystickSquare.x - width
+                width: modelData[1]
+                height: modelData[2]
+                color: root.color
+                opacity: opacityFactor - Math.abs(modelData[0] / (maxY - minY))
+            }
+
+            Rectangle {
+                y: joystickSquare.y + Helper.mapToRange(modelData[0], minY, maxY, joystickSquare.height)
+                x: joystickSquare.x + joystickSquare.width
+                width: modelData[1]
+                height: modelData[2]
+                color: root.color
+                opacity: opacityFactor - Math.abs(modelData[0] / (maxY - minY))
+            }
         }
     }
 
-    ColoredIcon {
+    // Top and Bottom ticks
+    Item {
+        Rectangle {
+            y: joystickSquare.y - height
+            x: joystickSquare.x + joystickSquare.width / 2 - width / 2
+            width: 3
+            height: (root.width / 2 - joystickSquare.width / 2) * 0.8
+            color: root.color
+            opacity: opacityFactor
+        }
+
+        Rectangle {
+            y: joystickSquare.y + joystickSquare.height
+            x: joystickSquare.x + joystickSquare.width / 2 - width / 2
+            width: 3
+            height: (root.width / 2 - joystickSquare.width / 2) * 0.8
+            color: root.color
+            opacity: opacityFactor
+        }
+    }
+
+    Item {
         id: feedback
+        visible: x != handle.x || y != handle.y
         x: joystickSquare.x + Helper.mapToRange(feedbackX, minX, maxX, (joystickSquare.width - feedback.width))
         y: joystickSquare.y + Helper.mapToRange(feedbackY, minY, maxY, (joystickSquare.height - feedback.height))
         height: horizontalStick.height
         width: height
-        opacity: opacityFactor
-        color: root.color
-        source: "qrc:/icons/ind_aim.svg"
+
+        Rectangle {
+            anchors.centerIn: feedback
+            height: horizontalStick.height / 4
+            width: height
+            radius: width / 2
+            color: enabled ? Theme.activeColor : Theme.disabledColor
+        }
     }
 
     ColoredIcon {
