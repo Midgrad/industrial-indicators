@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import QtGraphicalEffects 1.0
 import Industrial.Indicators 1.0
-import QtQuick.Controls 2.2 as T
 
 Item {
     id: root
@@ -9,7 +8,7 @@ Item {
     property alias source: image.source
     property alias mirror: image.mirror
     property alias color: overlay.color
-    property alias toolTipText: toolTip.text
+    property string tipText
 
     rotation: mirror ? 180 : 0
 
@@ -37,21 +36,9 @@ Item {
         }
     }
 
-    T.ToolTip {
-        id: toolTip
+    ToolTip {
         visible: text ? mouseArea.containsMouse : false
-
-        contentItem: Text {
-            text: toolTip.text
-            font: toolTip.font
-            color: Theme.tipText
-            horizontalAlignment: Qt.AlignHCenter
-        }
-
-        background: Rectangle {
-            color: Theme.tip
-            radius: 3
-        }
+        text: tipText
     }
 }
 
