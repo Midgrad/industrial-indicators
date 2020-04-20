@@ -8,7 +8,7 @@ PercentageIndicator {
     implicitWidth: height + label.width
     implicitHeight: Theme.baseSize*2
 
-    ColoredIcon {
+    IconIndicator {
         anchors.left: parent.left
         height: parent.height
         width: height

@@ -55,7 +55,7 @@ OperationalItem {
         anchors.margins: textOffset + tickTextedSize
         rotation: safeHeading - course
 
-        ColoredIcon {
+        IconIndicator {
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             width: arrowSize
@@ -65,7 +65,7 @@ OperationalItem {
         }
     }
 
-    ColoredIcon {
+    IconIndicator {
         color: Theme.textColor
         anchors.fill: parent
         source: mark

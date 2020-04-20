@@ -17,7 +17,7 @@ OperationalItem {
 
     property alias prefix: prefixText.text
     property alias valueText: valueText.text
-    property alias toolTipText: toolTip.text
+    property string tipText
     property alias prefixFont: prefixText.font
     property alias valueFont: valueText.font
 
@@ -51,22 +51,9 @@ OperationalItem {
         }
     }
 
-
-    T.ToolTip {
-        id: toolTip
+    ToolTip {
         visible: text ? mouseArea.containsMouse : false
-
-        contentItem: Text {
-            text: toolTip.text
-            font: toolTip.font
-            color: Theme.tipText
-            horizontalAlignment: Qt.AlignHCenter
-        }
-
-        background: Rectangle {
-            color: Theme.tip
-            radius: 3
-        }
+        text: tipText
     }
 }
 
