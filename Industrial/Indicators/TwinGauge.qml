@@ -183,7 +183,7 @@ Item {
 
 
 
-    ColoredIcon {
+    IconIndicator {
         id: tickUp
         x: _persentUp / 100 * root.width - width / 2
         anchors.verticalCenter: parent.top
@@ -193,7 +193,7 @@ Item {
         color: Theme.backgroundColor
 
 
-        ColoredIcon {
+        IconIndicator {
             implicitWidth: Theme.baseSize
             implicitHeight: Theme.baseSize
             anchors.fill: parent
@@ -204,7 +204,7 @@ Item {
     }
 
 
-    ColoredIcon {
+    IconIndicator {
         id: tickDown
         x: _persentDown / 100 * root.width - width / 2
         anchors.verticalCenter: parent.bottom
@@ -214,7 +214,7 @@ Item {
         color: Theme.backgroundColor
         rotation: 180
 
-        ColoredIcon {
+        IconIndicator {
             implicitWidth: Theme.baseSize
             implicitHeight: Theme.baseSize
             anchors.fill: parent

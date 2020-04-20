@@ -140,7 +140,7 @@ Item {
         }
     }
 
-    ColoredIcon {
+    IconIndicator {
         id: handle
         visible: !incorrectValues
         x: _x0

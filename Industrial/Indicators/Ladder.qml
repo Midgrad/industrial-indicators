@@ -98,7 +98,7 @@ OperationalItem {
         color: Theme.activeColor
     }
 
-    ColoredIcon {
+    IconIndicator {
         anchors.right: mirrored ? undefined : root.right
         anchors.left: mirrored ? root.left : undefined
         y: label.y

@@ -24,7 +24,7 @@ Item {
         onClicked: control.clicked()
     }
 
-    ColoredIcon {
+    IconIndicator {
         id: icon
         implicitWidth: Theme.baseSize
         implicitHeight: Theme.baseSize
