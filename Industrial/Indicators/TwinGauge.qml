@@ -31,12 +31,24 @@ Item {
 
 
     function recalculateUp() {
-        if (!modelUp || modelUp.length < 2 ||
-                valueUp < modelUp[0].value ||
-                valueUp > modelUp[modelUp.length - 1].value)
-        {
+        if (!modelUp || modelUp.length < 2) {
+            tickUp.visible = false
+            colorUp = Theme.disabledColor;
+            return;
+        } else {
+            tickUp.visible = true
+        }
+
+        if (valueUp < modelUp[0].value) {
             activeModelNumUp = 0;
             _persentUp = 0;
+            colorUp = Theme.disabledColor;
+            return;
+        }
+
+        if (valueUp > modelUp[modelUp.length - 1].value) {
+            activeModelNumUp = 0;
+            _persentUp = 100;
             colorUp = Theme.disabledColor;
             return;
         }
@@ -61,12 +73,24 @@ Item {
 
 
     function recalculateDown() {
-        if (!modelDown || modelDown.length < 2 ||
-                valueDown < modelDown[0].value ||
-                valueDown > modelDown[modelDown.length - 1].value)
-        {
+        if (!modelDown || modelDown.length < 2) {
+            tickDown.visible = false
+            colorDown = Theme.disabledColor;
+            return;
+        } else {
+            tickDown.visible = true
+        }
+
+        if (valueDown < modelDown[0].value) {
             activeModelNumDown = 0;
             _persentDown = 0;
+            colorDown = Theme.disabledColor;
+            return;
+        }
+
+        if (valueDown > modelDown[modelDown.length - 1].value) {
+            activeModelNumDown = 0;
+            _persentDown = 100;
             colorDown = Theme.disabledColor;
             return;
         }
@@ -160,7 +184,6 @@ Item {
 
 
     ColoredIcon {
-        visible: activeModelNumUp != 0
         id: tickUp
         x: _persentUp / 100 * root.width - width / 2
         anchors.verticalCenter: parent.top
@@ -200,7 +223,5 @@ Item {
             color: root.colorDown
         }
     }
-
-
 }
 
