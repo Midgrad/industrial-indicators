@@ -4,7 +4,7 @@ import Industrial.Indicators 1.0
 Item {
     id: root
 
-    property color color: enabled ? Theme.textColor : Theme.disabledColor
+    property color color: enabled ? (incorrectValues ? Theme.dangerColor : Theme.textColor) : Theme.disabledColor
     property real opacityFactor: 0.75
     property real handleFactor: 0.33
 
@@ -15,6 +15,7 @@ Item {
     property real ticksY: 5
     property real feedbackX: (maxX - minX) / 2
     property real feedbackY: (maxY - minY) / 2
+    readonly property bool incorrectValues: feedbackX < minX || feedbackX > maxX || feedbackY < minY || feedbackY > maxY
 
     property alias feedbackVisible: feedback.visible
 
@@ -50,6 +51,7 @@ Item {
 
     Rectangle {
         id: horizontalStick
+        visible: !incorrectValues
         x: joystickSquare.x
         y: handle.y
         height: joystickSquare.height * handleFactor
@@ -123,7 +125,7 @@ Item {
 
     Item {
         id: feedback
-        visible: x != handle.x || y != handle.y
+        visible: !incorrectValues && (x != handle.x || y != handle.y)
         x: joystickSquare.x + Helper.mapToRange(feedbackX, minX, maxX, (joystickSquare.width - feedback.width))
         y: joystickSquare.y + Helper.mapToRange(feedbackY, minY, maxY, (joystickSquare.height - feedback.height))
         height: horizontalStick.height
@@ -140,6 +142,7 @@ Item {
 
     ColoredIcon {
         id: handle
+        visible: !incorrectValues
         x: _x0
         y: _y0
         height: horizontalStick.height
