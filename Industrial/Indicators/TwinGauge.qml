@@ -139,9 +139,9 @@ Item {
                     anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeaterUp.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: (index != 0 && index == root.activeModelNumUp) ? modelData.color : "transparent"
+                    color:  (index != 0 && index == root.activeModelNumUp) ? (root.enabled ? modelData.color : Theme.disabledColor)  : "transparent"
                     border.width: 1
-                    border.color: index == 0 ? "transparent" : modelData.color
+                    border.color: root.enabled ? (index == 0 ? "transparent" : modelData.color) : Theme.disabledColor
                 }
             }
         }
@@ -173,9 +173,9 @@ Item {
                     anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeaterDown.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: (index != 0 && index == root.activeModelNumDown) ? modelData.color : "transparent"
+                    color: (index != 0 && index == root.activeModelNumDown) ? (root.enabled ? modelData.color : Theme.disabledColor) : "transparent"
                     border.width: 1
-                    border.color: index == 0 ? "transparent" : modelData.color
+                    border.color: root.enabled ? (index == 0 ? "transparent" : modelData.color) : Theme.disabledColor
                 }
             }
         }
@@ -199,7 +199,7 @@ Item {
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source
-            color: root.colorUp
+            color: root.enabled ? root.colorUp : Theme.disabledColor
         }
     }
 
@@ -220,7 +220,7 @@ Item {
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source
-            color: root.colorDown
+            color: root.enabled ? root.colorDown : Theme.disabledColor
         }
     }
 }
