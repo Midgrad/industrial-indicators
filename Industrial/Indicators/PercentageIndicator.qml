@@ -11,6 +11,7 @@ Item {
     readonly property int percentageBordered: Math.max(0, Math.min(percentage, 100))
 
     property color color: {
+        if (!root.enabled) return Theme.disabledColor;
         if (percentage > positivePercentage)
             return Theme.positiveColor;
         if (percentage > cautionPercentage)
