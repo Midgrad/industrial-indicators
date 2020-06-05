@@ -53,7 +53,7 @@ OperationalItem {
     Item {
         anchors.fill: parent
         anchors.margins: textOffset + tickTextedSize
-        rotation: safeHeading - course
+        rotation: -safeHeading + course
 
         IconIndicator {
             anchors.top: parent.top
