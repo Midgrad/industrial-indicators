@@ -71,7 +71,6 @@ Item {
         }
     }
 
-
     function recalculateDown() {
         if (!modelDown || modelDown.length < 2) {
             tickDown.visible = false
@@ -181,8 +180,6 @@ Item {
         }
     }
 
-
-
     IconIndicator {
         id: tickUp
         x: _persentUp / 100 * root.width - width / 2
@@ -202,7 +199,6 @@ Item {
             color: root.enabled ? root.colorUp : Theme.disabledColor
         }
     }
-
 
     IconIndicator {
         id: tickDown

@@ -41,7 +41,6 @@ Item {
             return;
         }
 
-
         if (value > model[model.length - 1].value)
         {
             activeModelNum = 0;
