@@ -22,13 +22,31 @@ Item {
     onValueChanged: recalculate()
 
     function recalculate() {
-        if (!model || model.length < 2 ||
-                value < model[0].value ||
-                value > model[model.length - 1].value)
+        if (!model || model.length < 2)
         {
+            tick.visible = false
             activeModelNum = 0;
             _persent = 0;
             color = Theme.disabledColor;
+            return;
+        } else {
+            tick.visible = true
+        }
+
+        if (value < model[0].value)
+        {
+            activeModelNum = 0;
+            _persent = 0;
+            color = model[1].color;
+            return;
+        }
+
+
+        if (value > model[model.length - 1].value)
+        {
+            activeModelNum = 0;
+            _persent = 100;
+            color = model[model.length - 1].color;
             return;
         }
 

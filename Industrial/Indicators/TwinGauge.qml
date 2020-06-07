@@ -42,14 +42,14 @@ Item {
         if (valueUp < modelUp[0].value) {
             activeModelNumUp = 0;
             _persentUp = 0;
-            colorUp = Theme.disabledColor;
+            colorUp = modelUp[1].color;
             return;
         }
 
         if (valueUp > modelUp[modelUp.length - 1].value) {
             activeModelNumUp = 0;
             _persentUp = 100;
-            colorUp = Theme.disabledColor;
+            colorUp = modelUp[modelUp.length - 1].color;
             return;
         }
 
@@ -84,14 +84,14 @@ Item {
         if (valueDown < modelDown[0].value) {
             activeModelNumDown = 0;
             _persentDown = 0;
-            colorDown = Theme.disabledColor;
+            colorDown = modelDown[1].color;
             return;
         }
 
         if (valueDown > modelDown[modelDown.length - 1].value) {
             activeModelNumDown = 0;
             _persentDown = 100;
-            colorDown = Theme.disabledColor;
+            colorDown = modelDown[modelDown.length - 1].color;
             return;
         }
 
