@@ -25,8 +25,10 @@ OperationalItem {
     property string prefix
     property string suffix
 
-    property color scaleColor: enabled ? (operational ? Theme.textColor : Theme.dangerColor) : Theme.disabledColor
-    property color labelColor: enabled ? (operational ? Theme.textColor : Theme.dangerColor) : Theme.disabledColor
+    property color scaleColor: enabled ? (operational ? Theme.textColor : Theme.dangerColor) :
+                                         Theme.disabledColor
+    property color labelColor: enabled ? (operational ? Theme.textColor : Theme.dangerColor) :
+                                         Theme.disabledColor
     property color hatchColor: enabled ? Theme.dangerColor : Theme.disabledColor
 
     function mapToRange(val) {
@@ -111,7 +113,7 @@ OperationalItem {
 
     ValueLabel {
         id: label
-        y: root.height - mapToRange(value) - height / 2
+        y: (isNaN(value) ? root.height / 2 : root.height - mapToRange(value)) - height / 2
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right
         anchors.margins: tickMajorSize
