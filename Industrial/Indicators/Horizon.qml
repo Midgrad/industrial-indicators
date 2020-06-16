@@ -10,10 +10,12 @@ Item {
     property real maxPitch: 25.0
     property real effectiveHeight: height
 
-    property color skyHighColor: enabled ? Theme.skyHighColor : Theme.skyOffHighColor
-    property color skyLowColor: enabled ? Theme.skyLowColor : Theme.skyOffLowColor
-    property color groundHighColor: enabled ? Theme.groundHighColor : Theme.groundOffHighColor
-    property color groundLowColor: enabled ? Theme.groundLowColor : Theme.groundOffLowColor
+    property bool online: false
+
+    property color skyHighColor: online ? Theme.skyHighColor : Theme.skyOffHighColor
+    property color skyLowColor: online ? Theme.skyLowColor : Theme.skyOffLowColor
+    property color groundHighColor: online ? Theme.groundHighColor : Theme.groundOffHighColor
+    property color groundLowColor: online ? Theme.groundLowColor : Theme.groundOffLowColor
 
     Behavior on skyHighColor { ColorAnimation { duration: 200 } }
     Behavior on skyLowColor { ColorAnimation { duration: 200 } }

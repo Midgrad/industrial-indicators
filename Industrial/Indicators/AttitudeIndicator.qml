@@ -4,14 +4,14 @@ import QtGraphicalEffects 1.0
 OperationalItem {
     id: ai
 
-    property bool armed: true
-
     property real pitch: 0.0
     property real roll: 0.0
 
     property real maxPitch: 23
     property real minPitch: -maxPitch
 
+    property bool ready: true
+    property bool online: true
     property bool pitchInverted: true
     property bool rollInverted: false
 
@@ -31,6 +31,7 @@ OperationalItem {
         height: width
         visible: false
         effectiveHeight: ai.effectiveHeight
+        online: ai.online
         pitch: pitchInverted && !isNaN(ai.pitch) ? ai.pitch : 0
         roll: !rollInverted && !isNaN(ai.roll) ? ai.roll : 0
         minPitch: ai.minPitch

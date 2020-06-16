@@ -54,7 +54,7 @@ AttitudeIndicator {
         text: qsTr("DISARMED")
         font.pixelSize: fd.height * 0.1
         font.bold: true
-        color: armed ? "transparent" : Theme.dangerColor
+        color: ready ? "transparent" : Theme.dangerColor
     }
 
     DesiredAnglesMark {
@@ -73,7 +73,7 @@ AttitudeIndicator {
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? 0 : -fd.pitch
         roll: rollInverted ? -fd.roll : 0
-        markColor: armed ? Theme.aiMarkColor : Theme.dangerColor
+        markColor: ready ? Theme.aiMarkColor : Theme.dangerColor
         markWidth: 3
     }
 
