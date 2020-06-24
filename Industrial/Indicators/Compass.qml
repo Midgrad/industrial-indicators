@@ -69,6 +69,6 @@ OperationalItem {
         color: Theme.textColor
         anchors.fill: parent
         source: mark
-        anchors.margins: centerOffset
+        anchors.margins: root.width * 0.2
     }
 }
