@@ -21,9 +21,6 @@ Canvas {
 
         ctx.clearRect(0, 0, width, height);
 
-        ctx.fillStyle = Theme.backgroundColor;
-        ctx.fillRect(0, 0, width, height);
-
         var offset = Helper.mapToRange(value, minValue, maxValue, height);
         var zero = Helper.mapToRange(0, minValue, maxValue, height);
 
