@@ -1,5 +1,4 @@
 ﻿import QtQuick 2.6
-import Industrial.Indicators 1.0
 
 AttitudeIndicator {
     id: fd
@@ -55,6 +54,7 @@ AttitudeIndicator {
         font.pixelSize: fd.height * 0.1
         font.bold: true
         color: ready ? "transparent" : Theme.dangerColor
+        z: 6
     }
 
     DesiredAnglesMark {
@@ -64,17 +64,7 @@ AttitudeIndicator {
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? fd.pitch - desiredPitch : -desiredPitch
         roll: rollInverted ? -desiredRoll : fd.roll - desiredRoll
-    }
-
-    PlaneMark {
-        id: mark
-        anchors.centerIn: parent
-        width: parent.width * 0.7
-        effectiveHeight: fd.effectiveHeight
-        pitch: pitchInverted ? 0 : -fd.pitch
-        roll: rollInverted ? -fd.roll : 0
-        markColor: ready ? Theme.aiMarkColor : Theme.dangerColor
-        markWidth: 3
+        z: 8
     }
 
     Clickable {

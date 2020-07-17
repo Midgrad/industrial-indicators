@@ -22,8 +22,7 @@
         <file>Industrial/Indicators/RollScale.qml</file>
         <file>Industrial/Indicators/RollScaleTick.qml</file>
         <file>Industrial/Indicators/AttitudeIndicator.qml</file>
-        <file>Industrial/Indicators/ArtificialHorizon.qml</file>
-        <file>Industrial/Indicators/AttitudeDirectorIndicator.qml</file>
+        <file>Industrial/Indicators/AttitudeDirector.qml</file>
         <file>Industrial/Indicators/YawIndicator.qml</file>
         <file>Industrial/Indicators/ValueLabel.qml</file>
         <file>Industrial/Indicators/CoordLabel.qml</file>
@@ -35,7 +34,7 @@
         <file>Industrial/Indicators/AimIndicator.qml</file>
         <file>Industrial/Indicators/LandingIndicator.qml</file>
         <file>Industrial/Indicators/Joystick.qml</file>
-	<file>Industrial/Indicators/SquareJoystick.qml</file>
+        <file>Industrial/Indicators/SquareJoystick.qml</file>
         <file>Industrial/Indicators/Cross.qml</file>
         <file>Industrial/Indicators/Strobe.qml</file>
         <file>Industrial/Indicators/Arrow.qml</file>

@@ -50,4 +50,16 @@ OperationalItem {
         source: horizon
         maskSource: mask
     }
+
+    PlaneMark {
+        id: mark
+        anchors.centerIn: parent
+        width: parent.width * 0.7
+        effectiveHeight: ai.effectiveHeight
+        pitch: pitchInverted ? 0 : -ai.pitch
+        roll: rollInverted ? -ai.roll : 0
+        markColor: ready ? Theme.aiMarkColor : Theme.dangerColor
+        markWidth: 3
+        z: 10
+    }
 }

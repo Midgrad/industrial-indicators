@@ -24,8 +24,7 @@ PitchScaleTick 1.0 PitchScaleTick.qml
 RollScale 1.0 RollScale.qml
 RollScaleTick 1.0 RollScaleTick.qml
 AttitudeIndicator 1.0 AttitudeIndicator.qml
-ArtificialHorizon 1.0 ArtificialHorizon.qml
-AttitudeDirectorIndicator 1.0 AttitudeDirectorIndicator.qml
+AttitudeDirector 1.0 AttitudeDirector.qml
 YawIndicator 1.0 YawIndicator.qml
 ValueLabel 1.0 ValueLabel.qml
 CoordLabel 1.0 CoordLabel.qml
