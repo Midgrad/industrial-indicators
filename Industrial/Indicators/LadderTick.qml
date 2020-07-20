@@ -15,7 +15,7 @@ Item {
         anchors.right: mirrored ? undefined : parent.right
         anchors.verticalCenter: parent.verticalCenter
         width: major ? tickMajorSize : tickMinorSize
-        height: major ? tickMajorWeight : tickMinorWeight
+        height: major ? tickMajorWidth : tickMinorWidth
         color: root.color
     }
 
