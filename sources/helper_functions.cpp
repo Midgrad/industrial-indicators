@@ -2,11 +2,9 @@
 
 #include <QCoreApplication>
 #include <QQmlEngine>
-#include <QDebug>
 
 void registerHelperFunctions()
 {
-    qDebug() << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     qmlRegisterType<HelperFunctions>("Industrial.Indicators", 1, 0, "HelperFunctions");
 }
 
