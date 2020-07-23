@@ -35,6 +35,6 @@ QtObject {
     property color aiTextColor: "#ffffff"
     property color aiMarkColor: "#1a2226"
 
-    property color tip: "#009688"               // Фон подсказки
-    property color tipText: "#ffffff"           // Текст подсказки
+    property color tipColor: "#009688"
+    property color tipTextColor: "#ffffff"
 }

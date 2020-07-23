@@ -15,12 +15,11 @@ OperationalItem {
     property bool mirrored: false
 
     property real scaleFontSize: Theme.fontSize
-    property real labelFontSize: scaleFontSize * 1.5
     property real tickMinorSize: scaleFontSize * 0.4
     property real tickMajorSize: scaleFontSize * 0.6
     property real textOffset: scaleFontSize * 0.8
-    property real tickMajorWeight: 2
-    property real tickMinorWeight: 1
+    property real tickMajorWidth: 2
+    property real tickMinorWidth: 1
 
     property string prefix
     property string suffix
@@ -45,20 +44,25 @@ OperationalItem {
     Hatch {
         id: hatch
         anchors.left: parent.left
-        anchors.leftMargin: mirrored ? 10 : 0
         anchors.right: parent.right
-        anchors.rightMargin: mirrored ? 0 : 10
         anchors.bottom: parent.bottom
         height: mapToRange(warningValue)
         color: hatchColor
         z: -1
+
+        Rectangle {
+            anchors.top: parent.top
+            width: parent.width
+            height: tickMajorWidth
+            color: parent.color
+        }
     }
 
     Rectangle {
         id: line
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right
-        width: tickMinorWeight
+        width: tickMinorWidth
         height: parent.height
         gradient:  Gradient {
             GradientStop { position: 0.0; color: "transparent" }
@@ -121,7 +125,6 @@ OperationalItem {
         value: root.value
         operational: root.operational
         prefix: root.prefix
-        valueFont.pixelSize: labelFontSize
         prefixFont.pixelSize: scaleFontSize
         color: labelColor
     }
