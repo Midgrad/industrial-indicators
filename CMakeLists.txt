@@ -1,23 +1,30 @@
 # CMake version string
 cmake_minimum_required(VERSION 3.2.1)
 
-# Import path
-set(INDUSTRIAL_INDICATORS_IMPORT_PATH ${CMAKE_CURRENT_LIST_DIR})
+# Project
+project(industrial_indicators)
+
+# Find QtCore module
+find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Qml)
+
+# Target
+add_library(${PROJECT_NAME} SHARED "")
 
 # Qml import dirs
 set (QML_IMPORT_PATH ${QML_IMPORT_PATH} ${CMAKE_CURRENT_LIST_DIR} CACHE STRING "Qt Creator extra qml import paths" FORCE)
 
-# Industrial includes
-set(INDUSTRIAL_INDICATORS_INCLUDES "${INDUSTRIAL_INDICATORS_IMPORT_PATH}/includes")
+# Includes
+target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_LIST_DIR}/includes")
 
-# Industrial sources & resources
-file(GLOB_RECURSE INDUSTRIAL_INDICATORS_SOURCES
-    "${INDUSTRIAL_INDICATORS_IMPORT_PATH}/includes/*.h"
-    "${INDUSTRIAL_INDICATORS_IMPORT_PATH}/sources/*.h"
-    "${INDUSTRIAL_INDICATORS_IMPORT_PATH}/sources/*.cpp"
-)
+# Sources
+file(GLOB_RECURSE SOURCES "*.h" "*.cpp" "*.hpp")
+target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
 
-# Industrial resources
-file(GLOB_RECURSE INDUSTRIAL_INDICATORS_RESOURCES
-    "${INDUSTRIAL_INDICATORS_IMPORT_PATH}/*.qrc"
-)
+# Resources
+file(GLOB_RECURSE QRC_FILES "*.qrc")
+
+# Compile resources
+qt5_add_resources(QRC_SOURCES ${QRC_FILES})
+target_sources(${PROJECT_NAME} PRIVATE ${QRC_SOURCES})
+
+target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Gui Qt5::Qml)
