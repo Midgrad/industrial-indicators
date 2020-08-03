@@ -5,7 +5,7 @@ Item {
 
     property color color: Theme.textColor
     property real thickness: 2
-    property real cornerSize: Math.max(width, height) / 6
+    property real cornerSize: 6
     property bool tracking: false
 
     implicitHeight: width
@@ -42,21 +42,21 @@ Item {
                 ctx.closePath();
             }
             else {
-                ctx.moveTo(0, cornerSize);
+                ctx.moveTo(0, height / cornerSize);
                 ctx.lineTo(0, 0);
-                ctx.lineTo(cornerSize, 0);
+                ctx.lineTo(width / cornerSize, 0);
 
-                ctx.moveTo(width - cornerSize, 0);
+                ctx.moveTo(width - width / cornerSize, 0);
                 ctx.lineTo(width, 0);
-                ctx.lineTo(width, cornerSize);
+                ctx.lineTo(width, height / cornerSize);
 
-                ctx.moveTo(width, height - cornerSize);
+                ctx.moveTo(width, height - height / cornerSize);
                 ctx.lineTo(width, height);
-                ctx.lineTo(width - cornerSize, height);
+                ctx.lineTo(width - width / cornerSize, height);
 
-                ctx.moveTo(cornerSize, height);
+                ctx.moveTo(width / cornerSize, height);
                 ctx.lineTo(0, height);
-                ctx.lineTo(0, height - cornerSize);
+                ctx.lineTo(0, height - height / cornerSize);
             }
 
             ctx.stroke();
