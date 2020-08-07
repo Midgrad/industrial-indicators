@@ -36,7 +36,7 @@ OperationalItem {
             horizontalAlignment: Text.AlignHCenter
             color: root.color
             font.bold: true
-            font.pixelSize: Theme.fontSize
+            font.pixelSize: Theme.fontSize * 0.8
             visible: prefix.length > 0
         }
 
@@ -47,7 +47,7 @@ OperationalItem {
             horizontalAlignment: Text.AlignHCenter
             color: root.color
             font.bold: true
-            font.pixelSize: prefixFont.pixelSize * 1.25
+            font.pixelSize: Theme.fontSize
             text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
         }
     }
