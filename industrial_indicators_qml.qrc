@@ -35,7 +35,6 @@
         <file>Industrial/Indicators/LandingIndicator.qml</file>
         <file>Industrial/Indicators/Joystick.qml</file>
         <file>Industrial/Indicators/SquareJoystick.qml</file>
-        <file>Industrial/Indicators/Cross.qml</file>
         <file>Industrial/Indicators/Strobe.qml</file>
         <file>Industrial/Indicators/Arrow.qml</file>
         <file>Industrial/Indicators/TwinGauge.qml</file>
