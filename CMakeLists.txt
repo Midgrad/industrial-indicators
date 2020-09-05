@@ -27,7 +27,7 @@ file(GLOB_RECURSE QRC_FILES "*.qrc")
 qt5_add_resources(QRC_SOURCES ${QRC_FILES})
 target_sources(${PROJECT_NAME} PRIVATE ${QRC_SOURCES})
 
-target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Gui Qt5::Qml)
+target_link_libraries(${PROJECT_NAME} PUBLIC Qt5::Core Qt5::Gui Qt5::Qml)
 
 # Set Windows export
 fleet_set_definition("INDUSTRIAL_INDICATORS_DLL")
