@@ -13,11 +13,11 @@ Item {
     property color color: {
         if (!root.enabled) return Theme.disabledColor;
         if (percentage > positivePercentage)
-            return Theme.positiveColor;
+            return Theme.normalGreen;
         if (percentage > cautionPercentage)
-            return Theme.cautionColor;
+            return Theme.moderateYellow;
         if (percentage > 0)
-            return Theme.dangerColor;
+            return Theme.extremeRed;
 
         return Theme.disabledColor;
     }

@@ -28,7 +28,7 @@ Item {
 
             ctx.save();
 
-            ctx.fillStyle = operational ? Theme.textColor : Theme.dangerColor;
+            ctx.fillStyle = operational ? Theme.textColor : Theme.extremeRed;
 
             ctx.translate(width / 2, 0);
 

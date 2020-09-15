@@ -30,7 +30,7 @@ Item {
                 height: (repeater.count - index) * root.height / (repeater.count + 1)
                 radius: 2
                 color: rssi != 0 && rssi >= Helper.mapToRange(index, 0, columns, minRssiValue) ?
-                           Theme.positiveColor : root.inactiveColor
+                           Theme.normalGreen : root.inactiveColor
             }
         }
     }

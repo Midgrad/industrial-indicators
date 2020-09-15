@@ -10,7 +10,7 @@ OperationalItem {
     property bool active: false
     property color color: {
         if (!enabled) return Theme.disabledColor;
-        if (!operational) return Theme.dangerColor;
+        if (!operational) return Theme.extremeRed;
         if (active) return Theme.activeColor;
         return Theme.textColor;
     }

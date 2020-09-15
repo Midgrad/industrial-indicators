@@ -120,11 +120,11 @@ Item {
             id: repeaterUp
             model: [
                 {value: 0},
-                { percentage: 10, value: 10, color: Theme.dangerColor },
-                { percentage: 20, value: 30, color: Theme.cautionColor },
-                { percentage: 40, value: 70, color: Theme.positiveColor },
-                { percentage: 20, value: 90, color: Theme.cautionColor },
-                { percentage: 10, value: 100, color: Theme.dangerColor }
+                { percentage: 10, value: 10, color: Theme.extremeRed },
+                { percentage: 20, value: 30, color: Theme.moderateYellow },
+                { percentage: 40, value: 70, color: Theme.normalGreen },
+                { percentage: 20, value: 90, color: Theme.moderateYellow },
+                { percentage: 10, value: 100, color: Theme.extremeRed }
             ]
 
             Item {
@@ -154,11 +154,11 @@ Item {
             id: repeaterDown
             model: [
                 {value: 0},
-                { percentage: 10, value: 10, color: Theme.dangerColor },
-                { percentage: 20, value: 30, color: Theme.cautionColor },
-                { percentage: 40, value: 70, color: Theme.positiveColor },
-                { percentage: 20, value: 90, color: Theme.cautionColor },
-                { percentage: 10, value: 100, color: Theme.dangerColor }
+                { percentage: 10, value: 10, color: Theme.extremeRed },
+                { percentage: 20, value: 30, color: Theme.moderateYellow },
+                { percentage: 40, value: 70, color: Theme.normalGreen },
+                { percentage: 20, value: 90, color: Theme.moderateYellow },
+                { percentage: 10, value: 100, color: Theme.extremeRed }
             ]
 
             Item {

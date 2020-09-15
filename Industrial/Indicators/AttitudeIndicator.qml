@@ -58,7 +58,7 @@ OperationalItem {
         effectiveHeight: ai.effectiveHeight
         pitch: pitchInverted ? 0 : -ai.pitch
         roll: rollInverted ? -ai.roll : 0
-        markColor: ready ? Theme.aiMarkColor : Theme.dangerColor
+        markColor: ready ? Theme.aiMarkColor : Theme.extremeRed
         markWidth: 3
         z: 10
     }

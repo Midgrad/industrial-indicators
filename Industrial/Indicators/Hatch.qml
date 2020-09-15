@@ -3,7 +3,7 @@ import QtQuick 2.6
 ShaderEffect {
     id: shader
 
-    property color color: Theme.dangerColor
+    property color color: Theme.extremeRed
     property real size: 2
 
     property real _ratio: width * height / size

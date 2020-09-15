@@ -31,7 +31,7 @@ AttitudeIndicator {
         maxRoll: fd.maxRoll
         rollStep: fd.rollStep
         opacity: enabled ? 1 : 0.33
-        color: operational ? Theme.textColor : Theme.dangerColor
+        color: operational ? Theme.textColor : Theme.extremeRed
     }
 
     PitchScale {
@@ -44,7 +44,7 @@ AttitudeIndicator {
         maxPitch: pitchInverted ? fd.pitch + fd.maxPitch : fd.maxPitch
         pitchStep: fd.pitchStep
         opacity: enabled ? 1 : 0.33
-        color: operational ? Theme.aiTextColor : Theme.dangerColor
+        color: operational ? Theme.aiTextColor : Theme.extremeRed
     }
 
     Text {
@@ -53,7 +53,7 @@ AttitudeIndicator {
         text: qsTr("DISARMED")
         font.pixelSize: fd.height * 0.1
         font.bold: true
-        color: ready ? "transparent" : Theme.dangerColor
+        color: ready ? "transparent" : Theme.extremeRed
         z: 6
     }
 

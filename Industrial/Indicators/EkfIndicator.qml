@@ -32,9 +32,9 @@ Item {
                      height: modelData <= 0 ? 0 : root.height * Math.min(modelData, 1.0)
                      radius: 1
                      color: {
-                         if (modelData < caution) return Theme.positiveColor;
-                         if (modelData < danger) return Theme.cautionColor;
-                         return Theme.dangerColor;
+                         if (modelData < caution) return Theme.normalGreen;
+                         if (modelData < danger) return Theme.moderateYellow;
+                         return Theme.extremeRed;
                      }
                  }
              }

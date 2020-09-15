@@ -4,7 +4,7 @@ import Industrial.Indicators 1.0
 Item {
     id: root
 
-    property color color: enabled ? (incorrectValues ? Theme.dangerColor : Theme.textColor) : Theme.disabledColor
+    property color color: enabled ? (incorrectValues ? Theme.extremeRed : Theme.textColor) : Theme.disabledColor
     property real opacityFactor: 0.75
     property real handleFactor: 0.33
 

@@ -9,10 +9,10 @@ OperationalItem {
     property bool courseEnabled: true
     readonly property real safeHeading: isNaN(heading) ? 0 : heading
 
-    property color courseColor: Theme.positiveColor
+    property color courseColor: Theme.normalGreen
     property color headingColor: {
         if (!enabled) return Theme.disabledColor;
-        if (!operational) return Theme.dangerColor;
+        if (!operational) return Theme.extremeRed;
         return Theme.textColor;
     }
 

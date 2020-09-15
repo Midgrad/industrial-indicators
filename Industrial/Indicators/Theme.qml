@@ -14,9 +14,10 @@ QtObject {
     property color disabledColor: "#102027"
     property color activeColor: "#fd00fd"
 
-    property color dangerColor: "#e53535"
-    property color cautionColor: "#ff9800"
-    property color positiveColor: "#86c34a"
+    property color extremeRed: "#ce2029"
+    property color severeOrange: "#ff4f00"
+    property color moderateYellow: "#eed202"
+    property color normalGreen: "#01b36d"
 
     property color skyHighColor: "#0d1bd9"
     property color skyLowColor: "#00d4ff"

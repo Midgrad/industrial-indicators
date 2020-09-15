@@ -11,10 +11,10 @@ Item {
         switch (fix) {
         case -1:
         case 0: return Theme.backgroundColor;
-        case 1: return Theme.dangerColor;
-        case 2: return Theme.cautionColor;
+        case 1: return Theme.extremeRed;
+        case 2: return Theme.moderateYellow;
         case 3:
-        default: return Theme.positiveColor;
+        default: return Theme.normalGreen;
         }
     }
 
