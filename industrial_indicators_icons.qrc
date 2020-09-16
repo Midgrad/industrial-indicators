@@ -14,6 +14,8 @@
         <file>icons/ind_ladder_arrow.svg</file>
         <file>icons/ind_roll_arrow.svg</file>
         <file>icons/ind_compass_arrow.svg</file>
-	<file>icons/ind_stick.svg</file>
+        <file>icons/track.svg</file>
+        <file>icons/track_yaw.svg</file>
+        <file>icons/cancel_track.svg</file>
     </qresource>
 </RCC>
