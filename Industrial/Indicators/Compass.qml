@@ -16,11 +16,11 @@ OperationalItem {
         return Theme.textColor;
     }
 
-    property real fontSize: height * 0.07
-    property real tickMinorSize: fontSize * 0.3
-    property real tickMajorSize: fontSize * 0.5
-    property real tickTextedSize: fontSize * 0.8
-    property real textOffset: fontSize * 1.5
+    property real fontSize: height * 0.1
+    property real tickMinorSize: fontSize * 0.2
+    property real tickMajorSize: fontSize * 0.4
+    property real tickTextedSize: fontSize * 0.5
+    property real textOffset: fontSize * 1.4
     property real tickTextedWeight: 2
     property real tickMajorWeight: 1
     property real tickMinorWeight: 1

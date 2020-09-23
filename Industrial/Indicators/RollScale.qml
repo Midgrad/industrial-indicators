@@ -10,10 +10,10 @@ Item {
     property real rollStep: 5.0
     property int digits: 0
 
+    property real arrowSize: Theme.fontSize
     property real tickSize: Theme.fontSize * 0.4
-    property real arrowSize: tickSize * 1.8
     property real tickWeight: 1
-    property real fontSize: Math.max(height * 0.08, 8)
+    property real fontSize: Math.max(height * 0.1, 8)
 
     property color color: Theme.textColor
 
@@ -55,7 +55,7 @@ Item {
 
         Text {
             anchors.top: parent.top
-            anchors.topMargin: tickSize
+            anchors.topMargin: arrowSize
             anchors.horizontalCenter: parent.horizontalCenter
             text: digits > 0 ? value.toFixed(digits) : Math.floor(roll)
             font.pixelSize: fontSize

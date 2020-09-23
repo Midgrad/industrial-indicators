@@ -14,7 +14,7 @@ OperationalItem {
 
     property bool mirrored: false
 
-    property real scaleFontSize: Theme.fontSize
+    property alias scaleFontSize: label.prefixFont.pixelSize
     property real tickMinorSize: scaleFontSize * 0.4
     property real tickMajorSize: scaleFontSize * 0.6
     property real textOffset: scaleFontSize * 0.8
@@ -125,7 +125,6 @@ OperationalItem {
         value: root.value
         operational: root.operational
         prefix: root.prefix
-        prefixFont.pixelSize: scaleFontSize
         color: labelColor
     }
 }
