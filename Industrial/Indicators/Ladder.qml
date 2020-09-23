@@ -7,7 +7,7 @@ OperationalItem {
     property real value: 50
     property real error: 0
     property bool errorVisible: false
-    property real warningValue: minValue
+    property real warningValue: NaN
     property real minValue: 0
     property real maxValue: 100
     property real valueStep: 10
@@ -39,7 +39,6 @@ OperationalItem {
     }
 
     implicitWidth: label.implicitWidth + tickMajorSize * 2
-    clip: true
 
     Hatch {
         id: hatch
@@ -47,6 +46,7 @@ OperationalItem {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         height: mapToRange(warningValue)
+        visible: !isNaN(warningValue)
         color: hatchColor
         z: -1
 
