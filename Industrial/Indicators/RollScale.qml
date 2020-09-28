@@ -49,7 +49,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             width: arrowSize
             height: width
-            source: "qrc:/icons/ind_roll_arrow.svg"
+            source: "qrc:/icons/ind_heading_arrow.svg"
             color: root.color
         }
 

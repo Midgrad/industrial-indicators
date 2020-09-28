@@ -5,15 +5,17 @@ import Industrial.Indicators 1.0
 Item {
     id: root
 
+    readonly property real ratio : image.implicitWidth / image.implicitHeight
+    property string tipText
+
     property alias source: image.source
     property alias mirror: image.mirror
     property alias color: overlay.color
-    property string tipText
 
     rotation: mirror ? 180 : 0
 
-    implicitWidth: image.sourceSize.width
-    implicitHeight: image.sourceSize.height
+    implicitWidth: image.implicitWidth
+    implicitHeight: image.implicitHeight
 
     MouseArea {
         id: mouseArea

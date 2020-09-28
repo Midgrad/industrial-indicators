@@ -24,7 +24,7 @@ OperationalItem {
     property real tickTextedWeight: 2
     property real tickMajorWeight: 1
     property real tickMinorWeight: 1
-    property real arrowSize: width * 0.08
+    property real arrowSize: width * 0.15
     property real centerOffset: textOffset + tickTextedSize
 
     property url mark
@@ -59,8 +59,8 @@ OperationalItem {
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             width: arrowSize
-            height: width
-            source: "qrc:/icons/ind_compass_arrow.svg"
+            height: width / 2
+            source: "qrc:/icons/ind_course_arrow.svg"
             color: courseColor
         }
     }
