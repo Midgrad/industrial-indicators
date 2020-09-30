@@ -5,9 +5,6 @@ Helper 1.0 helper.js
 singleton Theme 1.0 Theme.qml
 OperationalItem 1.0 OperationalItem.qml
 OpacityBorder 1.0 OpacityBorder.qml
-PercentageIndicator 1.0 PercentageIndicator.qml
-BatteryIndicator 1.0 BatteryIndicator.qml
-FuelIndicator 1.0 FuelIndicator.qml
 Gauge 1.0 Gauge.qml
 TwinGauge 1.0 TwinGauge.qml
 VerticalBar 1.0 VerticalBar.qml
