@@ -46,33 +46,10 @@
     </message>
 </context>
 <context>
-    <name>helper</name>
+    <name>ValueLabel</name>
     <message>
-        <location filename="../Industrial/Indicators/helper.js" line="84"/>
-        <location filename="../Industrial/Indicators/helper.js" line="110"/>
+        <location filename="../Industrial/Indicators/ValueLabel.qml" line="50"/>
         <source>N/D</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Industrial/Indicators/helper.js" line="89"/>
-        <location filename="../Industrial/Indicators/helper.js" line="101"/>
-        <source>W</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Industrial/Indicators/helper.js" line="89"/>
-        <location filename="../Industrial/Indicators/helper.js" line="101"/>
-        <source>S</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Industrial/Indicators/helper.js" line="89"/>
-        <source>E</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Industrial/Indicators/helper.js" line="89"/>
-        <source>N</source>
         <translation></translation>
     </message>
 </context>

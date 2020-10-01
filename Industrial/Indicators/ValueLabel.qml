@@ -47,7 +47,7 @@ OperationalItem {
             color: root.color
             font.bold: true
             font.pixelSize: Theme.fontSize
-            text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
+            text: isNaN(value) ? qsTr("N/D") : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
         }
     }
 
