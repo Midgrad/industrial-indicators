@@ -24,7 +24,6 @@ AttitudeIndicator 1.0 AttitudeIndicator.qml
 AttitudeDirector 1.0 AttitudeDirector.qml
 YawIndicator 1.0 YawIndicator.qml
 ValueLabel 1.0 ValueLabel.qml
-CoordLabel 1.0 CoordLabel.qml
 DistanceLabel 1.0 DistanceLabel.qml
 SpeedArrow 1.0 SpeedArrow.qml
 Compass 1.0 Compass.qml

@@ -22,7 +22,6 @@
         <file>Industrial/Indicators/AttitudeDirector.qml</file>
         <file>Industrial/Indicators/YawIndicator.qml</file>
         <file>Industrial/Indicators/ValueLabel.qml</file>
-        <file>Industrial/Indicators/CoordLabel.qml</file>
         <file>Industrial/Indicators/DistanceLabel.qml</file>
         <file>Industrial/Indicators/SpeedArrow.qml</file>
         <file>Industrial/Indicators/Compass.qml</file>
