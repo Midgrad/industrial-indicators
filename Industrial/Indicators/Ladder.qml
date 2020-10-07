@@ -28,7 +28,7 @@ OperationalItem {
                                          Theme.disabledColor
     property color labelColor: enabled ? (operational ? Theme.textColor : Theme.extremeRed) :
                                          Theme.disabledColor
-    property color hatchColor: enabled ? Theme.extremeRed : Theme.disabledColor
+    property color hatchColor: Theme.severeOrange
 
     function mapToRange(val) {
         return Helper.mapToRange(val, minValue, maxValue, height);
@@ -47,7 +47,7 @@ OperationalItem {
         anchors.bottom: parent.bottom
         height: mapToRange(warningValue)
         visible: !isNaN(warningValue)
-        color: hatchColor
+        color: enabled ? hatchColor : Theme.backgroundColor
         z: -1
 
         Rectangle {
