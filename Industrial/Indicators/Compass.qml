@@ -9,6 +9,7 @@ OperationalItem {
     property bool courseEnabled: true
     readonly property real safeHeading: isNaN(heading) ? 0 : heading
 
+    property color iconColor: Theme.textColor
     property color courseColor: Theme.normalGreen
     property color headingColor: {
         if (!enabled) return Theme.disabledColor;
@@ -66,7 +67,7 @@ OperationalItem {
     }
 
     IconIndicator {
-        color: Theme.textColor
+        color: iconColor
         anchors.fill: parent
         source: mark
         anchors.margins: root.width * 0.2
