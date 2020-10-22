@@ -4,6 +4,7 @@ import Industrial.Indicators 1.0
 OperationalItem {
     id: root
 
+    property int digits: 0
     property real value: 50
     property real error: 0
     property bool errorVisible: false
@@ -124,7 +125,9 @@ OperationalItem {
         width: parent.width - tickMajorSize
         value: root.value
         operational: root.operational
+        digits: root.digits
         prefix: root.prefix
+        suffix: root.suffix
         color: labelColor
     }
 }
