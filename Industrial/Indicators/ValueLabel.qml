@@ -15,13 +15,16 @@ OperationalItem {
     }
 
     property alias prefix: prefixText.text
+    property alias suffix: suffixText.text
     property alias valueText: valueText.text
     property string tipText
     property alias prefixFont: prefixText.font
+    property alias suffixFont: suffixText.font
     property alias valueFont: valueText.font
 
-    implicitWidth: Math.max(prefixText.implicitWidth, valueText.implicitWidth)
-    implicitHeight: (prefix.length > 0 ? prefixText.implicitHeight * 0.75 : 0) + valueText.implicitHeight
+    implicitWidth: Math.max(prefixText.implicitWidth, valueText.implicitWidth, suffixText.implicitWidth)
+    implicitHeight: (prefix.length > 0 ? prefixText.implicitHeight * 0.75 : 0) + valueText.implicitHeight +
+                    (suffix.length > 0 ? suffixText.implicitHeight : 0)
 
     MouseArea {
         id: mouseArea
@@ -41,13 +44,23 @@ OperationalItem {
 
         Text {
             id: valueText
-            anchors.bottom: parent.bottom
+            anchors.top: prefixText.bottom
             width: root.width
             horizontalAlignment: Text.AlignHCenter
             color: root.color
             font.bold: true
             font.pixelSize: Theme.fontSize
             text: isNaN(value) ? qsTr("N/D") : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
+        }
+
+        Text {
+            id: suffixText
+            anchors.bottom: parent.bottom
+            width: root.width
+            horizontalAlignment: Text.AlignHCenter
+            color: root.color
+            font: prefixText.font
+            visible: suffix.length > 0
         }
     }
 
