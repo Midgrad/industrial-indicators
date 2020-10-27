@@ -30,6 +30,7 @@ OperationalItem {
     property color labelColor: enabled ? (operational ? Theme.textColor : Theme.extremeRed) :
                                          Theme.disabledColor
     property color hatchColor: Theme.severeOrange
+    property color backgroundColor: Theme.backgroundColor
 
     function mapToRange(val) {
         return Helper.mapToRange(val, minValue, maxValue, height);
@@ -46,7 +47,7 @@ OperationalItem {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        height: mapToRange(warningValue)
+        height: Math.min(root.height, Math.max(mapToRange(warningValue)))
         visible: !isNaN(warningValue)
         color: enabled ? hatchColor : Theme.backgroundColor
         z: -1
@@ -60,12 +61,21 @@ OperationalItem {
     }
 
     Rectangle {
+        anchors.fill: parent
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: backgroundColor }
+            GradientStop { position: 0.5; color: "transparent" }
+            GradientStop { position: 1.0; color: backgroundColor }
+        }
+    }
+
+    Rectangle {
         id: line
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right
         width: tickMinorWidth
         height: parent.height
-        gradient:  Gradient {
+        gradient: Gradient {
             GradientStop { position: 0.0; color: "transparent" }
             GradientStop { position: 0.5; color: scaleColor }
             GradientStop { position: 1.0; color: "transparent" }
