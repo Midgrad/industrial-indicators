@@ -74,7 +74,8 @@ OperationalItem {
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right
         width: tickMinorWidth
-        height: parent.height
+        height: repeater.height
+        y: label.height / 2
     }
 
     Repeater {
