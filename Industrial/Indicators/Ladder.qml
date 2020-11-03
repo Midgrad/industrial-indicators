@@ -33,11 +33,11 @@ OperationalItem {
     property color backgroundColor: Theme.backgroundColor
 
     function mapToRange(val) {
-        return Helper.mapToRange(val, minValue, maxValue, height);
+        return Helper.mapToRange(val, minValue, maxValue, repeater.height);
     }
 
     function mapFromRange(pos) {
-        return Helper.mapFromRange(pos, minValue, maxValue, height);
+        return Helper.mapFromRange(pos, minValue, maxValue, repeater.height);
     }
 
     implicitWidth: label.implicitWidth + tickMajorSize * 2
@@ -75,15 +75,11 @@ OperationalItem {
         anchors.right: mirrored ? undefined : parent.right
         width: tickMinorWidth
         height: parent.height
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: "transparent" }
-            GradientStop { position: 0.5; color: scaleColor }
-            GradientStop { position: 1.0; color: "transparent" }
-        }
     }
 
     Repeater {
         id: repeater
+        height: root.height - label.height
         model: {
             var vals = [];
             for (var val = minValue - (minValue % valueStep); val <= maxValue;
@@ -96,23 +92,12 @@ OperationalItem {
         LadderTick {
             anchors.left: mirrored ? line.right : parent.left
             anchors.right: mirrored ? parent.right : line.left
-            y: root.height - mapToRange(value)
+            y: repeater.height - mapToRange(value) + label.height / 2
             visible: y < label.y || y > label.y + label.height
             value: modelData
             major: index % 2 == 0
             mirrored: root.mirrored
-            opacity: Math.sin(y / root.height * Math.PI)
         }
-    }
-
-    LadderTick {
-        width: root.width
-        y: root.height - mapToRange(value)
-        visible: errorVisible
-        value: root.value + error
-        major: y < label.y || y > label.y + label.height
-        mirrored: root.mirrored
-        color: Theme.activeColor
     }
 
     IconIndicator {
@@ -128,7 +113,7 @@ OperationalItem {
 
     ValueLabel {
         id: label
-        y: (isNaN(value) ? root.height / 2 : root.height - mapToRange(value)) - height / 2
+        y: (isNaN(value) ? repeater.height / 2 : repeater.height - mapToRange(value) + label.height / 2) - height / 2
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right
         anchors.margins: tickMajorSize
