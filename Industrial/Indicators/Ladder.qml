@@ -83,10 +83,12 @@ OperationalItem {
         height: root.height - label.height
         model: {
             var vals = [];
+            vals.push(minValue)
             for (var val = minValue - (minValue % valueStep); val <= maxValue;
                  val += (valueStep / 2)) {
                 vals.push(val);
             }
+            vals.push(maxValue)
             return vals;
         }
 
