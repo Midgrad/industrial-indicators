@@ -96,9 +96,9 @@ OperationalItem {
             anchors.left: mirrored ? line.right : parent.left
             anchors.right: mirrored ? parent.right : line.left
             y: repeater.height - mapToRange(value) + label.height / 2
-            visible: y < label.y || y > label.y + label.height
+            visible: y < label.y || y > label.y + label.height || value == minValue || value == maxValue
             value: modelData
-            major: index % 2 == 0
+            major: index % 2 == 0 && value != minValue && value != maxValue
             mirrored: root.mirrored
         }
     }
