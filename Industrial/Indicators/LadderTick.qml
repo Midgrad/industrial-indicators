@@ -7,6 +7,7 @@ Item {
     property int digits: 0
     property bool mirrored: false
     property bool major: true
+    property bool sign: true
     property color color: scaleColor
 
     Rectangle {
@@ -26,7 +27,7 @@ Item {
         anchors.right: parent.right
         anchors.margins: textOffset
         horizontalAlignment: mirrored ? Text.AlignLeft : Text.AlignRight
-        visible: major
+        visible: sign
         text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
         font.pixelSize: scaleFontSize
         color: root.color
