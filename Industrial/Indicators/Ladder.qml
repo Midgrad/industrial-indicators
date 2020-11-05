@@ -98,8 +98,12 @@ OperationalItem {
         height: root.height - (labelBorder ? label.height : 0)
         model: {
             var vals = [];
-            var startVal = minValue + (minValue > 0 ? minValue % valueStep : -minValue % valueStep)
-            vals.push(minValue);
+            var startVal = minValue + (minValue > 0 ? minValue % (valueStep / 2) : -minValue % (valueStep / 2))
+            vals.push(minValue)
+            // to save even index of major marks
+            if (minValue % (valueStep / 2) != minValue % valueStep) {
+                vals.push(minValue)
+            }
             for (var val = startVal; val <= maxValue; val += (valueStep / 2)) {
                 vals.push(val);
             }
