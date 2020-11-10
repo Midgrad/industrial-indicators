@@ -117,13 +117,16 @@ OperationalItem {
         }
 
         LadderTick {
+            property bool coverage: y >= label.y && y <= label.y + label.height
+            property bool extreme: value == minValue || value == maxValue
+
             anchors.left: mirrored ? line.right : parent.left
             anchors.right: mirrored ? parent.right : line.left
             y: repeater.height - mapToRange(value)
-            visible: y < label.y || y > label.y + label.height || value == minValue || value == maxValue
+            visible: !coverage || extreme
             value: modelData
-            major: index % 2 == 0 || value == maxValue
-            sign: index % 2 == 0 && value != maxValue && value != minValue
+            major: index % 2 == 0 || extreme
+            sign: (index % 2 == 0 || extreme) && !coverage
             mirrored: root.mirrored
             opacity: shading ? Math.sin(y / root.height * Math.PI) : 1
         }
