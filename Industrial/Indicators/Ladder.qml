@@ -12,6 +12,7 @@ OperationalItem {
     property real minValue: 0
     property real maxValue: 100
     property real valueStep: 10
+    property real startValue: minValue
 
     property bool mirrored: false
     property bool labelBorder: true
@@ -98,11 +99,15 @@ OperationalItem {
         height: root.height - (labelBorder ? label.height : 0)
         model: {
             var vals = [];
-            var startVal = minValue + (minValue > 0 ? minValue % (valueStep / 2) : -minValue % (valueStep / 2))
-            vals.push(minValue)
+            var startVal = startValue + (startValue > 0 ? startValue % (valueStep / 2) : -startValue % (valueStep / 2));
+            vals.push(startValue);
             // to save even index of major marks
-            if (minValue % (valueStep / 2) != minValue % valueStep) {
-                vals.push(minValue)
+            if (startValue % (valueStep / 2) != startValue % valueStep) {
+                vals.push(startValue);
+            }
+
+            if (valueStep == 0) {
+                return vals;
             }
             for (var val = startVal; val <= maxValue; val += (valueStep / 2)) {
                 vals.push(val);
@@ -112,13 +117,16 @@ OperationalItem {
         }
 
         LadderTick {
+            property bool coverage: y >= label.y && y <= label.y + label.height
+            property bool extreme: value == minValue || value == maxValue
+
             anchors.left: mirrored ? line.right : parent.left
             anchors.right: mirrored ? parent.right : line.left
             y: repeater.height - mapToRange(value)
-            visible: y < label.y || y > label.y + label.height || value == minValue || value == maxValue
+            visible: !coverage || extreme
             value: modelData
-            major: index % 2 == 0 || value == maxValue
-            sign: index % 2 == 0 && value != maxValue && value != minValue
+            major: index % 2 == 0 || extreme
+            sign: (index % 2 == 0 || extreme) && !coverage
             mirrored: root.mirrored
             opacity: shading ? Math.sin(y / root.height * Math.PI) : 1
         }
