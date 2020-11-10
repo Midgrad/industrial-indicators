@@ -98,22 +98,22 @@ OperationalItem {
         id: repeater
         height: root.height - (labelBorder ? label.height : 0)
         model: {
-            var vals = []
-            var startVal = startValue + (startValue > 0 ? startValue % (valueStep / 2) : -startValue % (valueStep / 2))
-            vals.push(startValue)
+            var vals = [];
+            var startVal = startValue + (startValue > 0 ? startValue % (valueStep / 2) : -startValue % (valueStep / 2));
+            vals.push(startValue);
             // to save even index of major marks
             if (startValue % (valueStep / 2) != startValue % valueStep) {
-                vals.push(startValue)
+                vals.push(startValue);
             }
 
             if (valueStep == 0) {
-                return vals
+                return vals;
             }
             for (var val = startVal; val <= maxValue; val += (valueStep / 2)) {
-                vals.push(val)
+                vals.push(val);
             }
-            vals.push(maxValue)
-            return vals
+            vals.push(maxValue);
+            return vals;
         }
 
         LadderTick {
