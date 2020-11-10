@@ -12,6 +12,7 @@ OperationalItem {
     property real minValue: 0
     property real maxValue: 100
     property real valueStep: 10
+    property real startValue: minValue
 
     property bool mirrored: false
     property bool labelBorder: true
@@ -98,11 +99,11 @@ OperationalItem {
         height: root.height - (labelBorder ? label.height : 0)
         model: {
             var vals = [];
-            var startVal = minValue + (minValue > 0 ? minValue % (valueStep / 2) : -minValue % (valueStep / 2))
-            vals.push(minValue)
+            var startVal = startValue + (startValue > 0 ? startValue % (valueStep / 2) : -startValue % (valueStep / 2))
+            vals.push(startValue)
             // to save even index of major marks
-            if (minValue % (valueStep / 2) != minValue % valueStep) {
-                vals.push(minValue)
+            if (startValue % (valueStep / 2) != startValue % valueStep) {
+                vals.push(startValue)
             }
             for (var val = startVal; val <= maxValue; val += (valueStep / 2)) {
                 vals.push(val);
