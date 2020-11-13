@@ -7,6 +7,7 @@ Item {
     property int digits: 0
     property bool major: true
     property color color: Theme.textColor
+    property bool visibleText: false
 
     Rectangle {
         id: tick
@@ -21,7 +22,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: tick.right
         anchors.margins: textOffset
-        visible: major
+        visible: major && visibleText
         text: digits > 0 ? value.toFixed(digits) : Math.floor(value)
         font.pixelSize: fontSize
         color: root.color
@@ -31,7 +32,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: tick.left
         anchors.margins: textOffset
-        visible: major
+        visible: major && visibleText
         text: digits > 0 ? value.toFixed(digits) : Math.floor(value)
         font.pixelSize: fontSize
         color: root.color

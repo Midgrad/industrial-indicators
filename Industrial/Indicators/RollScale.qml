@@ -16,6 +16,7 @@ Item {
     property real fontSize: Math.max(height * 0.1, 8)
 
     property color color: Theme.textColor
+    property bool visibleText: false
 
     function mapToRange(pitch) {
         return Helper.mapToRange(pitch, minPitch, maxPitch, height);
@@ -60,6 +61,7 @@ Item {
             text: digits > 0 ? value.toFixed(digits) : Math.floor(roll)
             font.pixelSize: fontSize
             color: root.color
+            visible: visibleText
         }
     }
 }
