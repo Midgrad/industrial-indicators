@@ -62,4 +62,18 @@ OperationalItem {
         markWidth: 3
         z: 10
     }
+
+    MouseArea {
+        id: aiMouseArea
+        anchors.fill: parent
+        hoverEnabled: true
+    }
+
+    ToolTip {
+        visible: aiMouseArea.containsMouse
+        property double roll: aircraft.attitude.roll
+        property double pitch: aircraft.attitude.pitch
+        text: "%1: %2\n%3: %4".arg(qsTr("Roll")).arg(roll)
+                              .arg(qsTr("Pitch")).arg(pitch)
+    }
 }
