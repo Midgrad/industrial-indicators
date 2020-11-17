@@ -72,18 +72,4 @@ OperationalItem {
         source: mark
         anchors.margins: root.width * 0.2
     }
-
-    MouseArea {
-        id: compassMouseArea
-        anchors.fill: parent
-        hoverEnabled: true
-    }
-
-    ToolTip {
-        visible: compassMouseArea.containsMouse
-        property double heading: Helper.angle360(aircraft.magnetic.heading)
-        property double course: Helper.angle360(aircraft.satellite.course)
-        text: "%1: %2\n%3: %4".arg(qsTr("Heading")).arg(heading)
-                              .arg(qsTr("Course")).arg(course)
-    }
 }

@@ -10,19 +10,6 @@
     </message>
 </context>
 <context>
-    <name>Compass</name>
-    <message>
-    	<location filename="../Industrial/Indicators/Compass.qml"/>
-	<source>Heading</source>
-	<translation>Курс</translation>
-    </message>
-    <message>
-    	<location filename="../Industrial/Indicators/Compass.qml"/>
-	<source>Course</source>
-	<translation>Путевой угол</translation>
-    </message>
-</context>
-<context>
     <name>CompassTick</name>
     <message>
         <location filename="../Industrial/Indicators/CompassTick.qml" line="20"/>
@@ -43,19 +30,6 @@
         <location filename="../Industrial/Indicators/CompassTick.qml" line="23"/>
         <source>W</source>
         <translation>З</translation>
-    </message>
-</context>
-<context>
-    <name>AttiitideIndicator</name>
-    <message>
-    	<location filename="../Industrial/Indicators/AttitudeIndicator.qml"/>
-	<source>Roll</source>
-	<translation>Угол крена</translation>
-    </message>
-    <message>
-    	<location filename="../Industrial/Indicators/AttitudeIndicator.qml"/>
-	<source>Pitch</source>
-	<translation>Угол тангажа</translation>
     </message>
 </context>
 <context>
