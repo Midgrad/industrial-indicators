@@ -113,9 +113,7 @@ AttitudeIndicator {
     }
 
     ToolTip {
-        visible: aiMouseArea.containsMouse && tipText
-        property double roll: aircraft.attitude.roll
-        property double pitch: aircraft.attitude.pitch
+        visible: aiMouseArea.containsMouse && tipText.length
         text: tipText
     }
 }

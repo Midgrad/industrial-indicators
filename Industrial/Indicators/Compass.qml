@@ -82,9 +82,7 @@ OperationalItem {
     }
 
     ToolTip {
-        visible: compassMouseArea.containsMouse && tipText
-        property double heading: Helper.angle360(aircraft.magnetic.heading)
-        property double course: Helper.angle360(aircraft.satellite.course)
+        visible: compassMouseArea.containsMouse && tipText.length
         text: tipText
     }
 }

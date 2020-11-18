@@ -7,7 +7,7 @@ Item {
     property int digits: 0
     property bool major: true
     property color color: Theme.textColor
-    property bool visibleText: false
+    property bool visibleText: true
 
     Rectangle {
         id: tick
