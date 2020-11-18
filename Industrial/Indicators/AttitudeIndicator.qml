@@ -4,7 +4,6 @@ import QtGraphicalEffects 1.0
 OperationalItem {
     id: ai
 
-    property string tipText
     property real pitch: 0.0
     property real roll: 0.0
 
@@ -62,18 +61,5 @@ OperationalItem {
         markColor: ready ? Theme.aiMarkColor : Theme.extremeRed
         markWidth: 3
         z: 10
-    }
-
-    MouseArea {
-        id: aiMouseArea
-        anchors.fill: parent
-        hoverEnabled: true
-    }
-
-    ToolTip {
-        visible: aiMouseArea.containsMouse && tipText || true
-        property double roll: aircraft.attitude.roll
-        property double pitch: aircraft.attitude.pitch
-        text: tipText
     }
 }
