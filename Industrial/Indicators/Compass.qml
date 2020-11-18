@@ -4,6 +4,7 @@ import Industrial.Indicators 1.0
 OperationalItem {
     id: root
 
+    property string tipText
     property real heading: 0
     property real course: 0
     property bool courseEnabled: true
@@ -71,5 +72,17 @@ OperationalItem {
         anchors.fill: parent
         source: mark
         anchors.margins: root.width * 0.2
+    }
+
+    MouseArea {
+        id: compassMouseArea
+        anchors.fill: parent
+        hoverEnabled: true
+        z: 10
+    }
+
+    ToolTip {
+        visible: compassMouseArea.containsMouse && tipText.length
+        text: tipText
     }
 }

@@ -3,6 +3,7 @@
 AttitudeIndicator {
     id: fd
 
+    property string tipText
     property real desiredPitch: 0.0
     property real desiredRoll: 0.0
 
@@ -103,5 +104,16 @@ AttitudeIndicator {
         iconColor: Theme.backgroundColor
         visible: inputEnabled
         onClicked: addRoll(0.05)
+    }
+
+    MouseArea {
+        id: aiMouseArea
+        anchors.fill: parent
+        hoverEnabled: true
+    }
+
+    ToolTip {
+        visible: aiMouseArea.containsMouse && tipText.length
+        text: tipText
     }
 }
