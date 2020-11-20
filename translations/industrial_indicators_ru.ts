@@ -4,7 +4,7 @@
 <context>
     <name>AttitudeDirector</name>
     <message>
-        <location filename="../Industrial/Indicators/AttitudeDirector.qml" line="53"/>
+        <location filename="../Industrial/Indicators/AttitudeDirector.qml" line="54"/>
         <source>DISARMED</source>
         <translation>ВЫКЛЮЧЕН</translation>
     </message>
@@ -48,32 +48,9 @@
 <context>
     <name>ValueLabel</name>
     <message>
-        <location filename="../Industrial/Indicators/ValueLabel.qml" line="50"/>
+        <location filename="../Industrial/Indicators/ValueLabel.qml" line="53"/>
         <source>N/D</source>
         <translation>Н/Д</translation>
-    </message>
-</context>
-<context>
-    <name>helper</name>
-    <message>
-        <source>N/D</source>
-        <translation type="vanished">Н/Д</translation>
-    </message>
-    <message>
-        <source>W</source>
-        <translation type="vanished">З</translation>
-    </message>
-    <message>
-        <source>S</source>
-        <translation type="vanished">Ю</translation>
-    </message>
-    <message>
-        <source>E</source>
-        <translation type="vanished">В</translation>
-    </message>
-    <message>
-        <source>N</source>
-        <translation type="vanished">С</translation>
     </message>
 </context>
 </TS>
