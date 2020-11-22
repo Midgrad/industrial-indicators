@@ -4,7 +4,7 @@
 <context>
     <name>AttitudeDirector</name>
     <message>
-        <location filename="../Industrial/Indicators/AttitudeDirector.qml" line="53"/>
+        <location filename="../Industrial/Indicators/AttitudeDirector.qml" line="54"/>
         <source>DISARMED</source>
         <translation></translation>
     </message>
@@ -48,7 +48,7 @@
 <context>
     <name>ValueLabel</name>
     <message>
-        <location filename="../Industrial/Indicators/ValueLabel.qml" line="50"/>
+        <location filename="../Industrial/Indicators/ValueLabel.qml" line="53"/>
         <source>N/D</source>
         <translation></translation>
     </message>
