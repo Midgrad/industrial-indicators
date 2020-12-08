@@ -14,7 +14,6 @@ OperationalItem {
     property real minValue: 0
     property real maxValue: 100
     property real valueStep: 10
-    property real startValue: minValue
 
     property bool mirrored: false
     property bool labelBorder: true
@@ -38,11 +37,13 @@ OperationalItem {
     property color backgroundColor: Theme.backgroundColor
 
     function mapToRange(val) {
-        return Helper.mapToRange(val, minValue, maxValue, repeater.height) - (labelBorder ? label.height / 2 : 0);
+        return Helper.mapToRange(val, minValue, maxValue, repeater.height) -
+                (labelBorder ? label.height / 2 : 0);
     }
 
     function mapFromRange(pos) {
-        return Helper.mapFromRange(pos, minValue, maxValue, repeater.height) + (labelBorder ? label.height / 2 : 0);
+        return Helper.mapFromRange(pos, minValue, maxValue, repeater.height) +
+                (labelBorder ? label.height / 2 : 0);
     }
 
     implicitWidth: label.implicitWidth + tickMajorSize * 2
@@ -101,20 +102,10 @@ OperationalItem {
         height: root.height - (labelBorder ? label.height : 0)
         model: {
             var vals = [];
-            var startVal = startValue + (startValue > 0 ? startValue % (valueStep / 2) : -startValue % (valueStep / 2));
-            vals.push(startValue);
-            // to save even index of major marks
-            if (startValue % (valueStep / 2) != startValue % valueStep) {
-                vals.push(startValue);
-            }
 
-            if (valueStep == 0) {
-                return vals;
-            }
-            for (var val = startVal; val <= maxValue; val += (valueStep / 2)) {
+            for (var val = Helper.floor125(minValue); val <= maxValue; val += (valueStep / 2)) {
                 vals.push(val);
             }
-            vals.push(maxValue);
             return vals;
         }
 
