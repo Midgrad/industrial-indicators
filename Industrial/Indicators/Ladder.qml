@@ -103,7 +103,8 @@ OperationalItem {
         model: {
             var vals = [];
 
-            for (var val = Helper.floor125(minValue); val <= maxValue; val += (valueStep / 2)) {
+            for (var val = Helper.floor125(minValue); val <= maxValue;
+                 val += (Helper.floor125(valueStep / 2))) {
                 vals.push(val);
             }
             return vals;

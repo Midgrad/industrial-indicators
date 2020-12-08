@@ -39,8 +39,6 @@ function floor125(x)
     else
         fr = 1.0;
 
-    console.log(sign, lx, p10)
-
     return sign * fr * Math.pow(10.0, p10);
 }
 
