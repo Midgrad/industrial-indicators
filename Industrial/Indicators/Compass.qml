@@ -71,7 +71,7 @@ OperationalItem {
         color: iconColor
         anchors.fill: parent
         source: mark
-        anchors.margins: root.width * 0.2
+        anchors.margins: root.width * 0.325
     }
 
     MouseArea {
