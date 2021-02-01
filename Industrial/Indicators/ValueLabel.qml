@@ -22,9 +22,10 @@ OperationalItem {
     property alias suffixFont: suffixText.font
     property alias valueFont: valueText.font
 
-    implicitWidth: Math.max(prefixText.implicitWidth, valueText.implicitWidth, suffixText.implicitWidth)
-    implicitHeight: (prefix.length > 0 ? prefixText.implicitHeight * 0.75 : 0) + valueText.implicitHeight +
-                    (suffix.length > 0 ? suffixText.implicitHeight : 0)
+    implicitWidth: Math.max(prefixText.implicitWidth, valueText.implicitWidth,
+                            suffixText.implicitWidth)
+    implicitHeight: (prefix.length > 0 ? prefixText.implicitHeight * 0.75 : 0) +
+                    valueText.implicitHeight + (suffix.length > 0 ? suffixText.implicitHeight : 0)
 
     MouseArea {
         id: mouseArea

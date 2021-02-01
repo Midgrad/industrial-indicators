@@ -103,24 +103,27 @@ OperationalItem {
         model: {
             var vals = [];
 
-            for (var val = Helper.floor125(minValue); val <= maxValue;
-                 val += (Helper.floor125(valueStep / 2))) {
-                vals.push(val);
+            var min = Helper.floor125(minValue);
+            var step = Helper.floor125(valueStep / 2);
+
+            if (min < maxValue && step > 0) {
+                for (var val = min; val <= maxValue; val += step)
+                    vals.push(val);
             }
             return vals;
         }
 
         LadderTick {
-            property bool coverage: y >= label.y && y <= label.y + label.height
-            property bool extreme: value == minValue || value == maxValue
+            property bool coverage: (y >= label.y) && (y <= (label.y + label.height))
+            property bool extreme: value === minValue || value === maxValue
 
             anchors.left: mirrored ? line.right : parent.left
             anchors.right: mirrored ? parent.right : line.left
             y: repeater.height - mapToRange(value)
             visible: !coverage || extreme
             value: modelData
-            major: index % 2 == 0 || extreme
-            sign: (index % 2 == 0 || extreme) && !coverage
+            major: index % 2 === 0 || extreme
+            sign: (index % 2 === 0 || extreme) && !coverage
             mirrored: root.mirrored
             opacity: shading ? Math.sin(y / root.height * Math.PI) : 1
         }
@@ -139,7 +142,13 @@ OperationalItem {
 
     ValueLabel {
         id: label
-        y: (isNaN(value) ? repeater.height / 2 : repeater.height - mapToRange(value)) - height / 2
+        y: {
+            if (isNaN(value))
+                return repeater.height / 2;
+
+            var pos = repeater.height - mapToRange(value) - height / 2;
+            return Math.min(repeater.height, Math.max(0, pos));
+        }
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right
         anchors.margins: tickMajorSize
