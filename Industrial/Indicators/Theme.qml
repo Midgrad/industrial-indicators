@@ -11,13 +11,14 @@ QtObject {
 
     property color textColor: "#ffffff"
     property color backgroundColor: "#1a2226"
-    property color disabledColor: "#102027"
+    property color disabledColor: "#bbc1c4"
     property color activeColor: "#fd00fd"
 
     property color extremeRed: "#ce2029"
     property color severeOrange: "#ff4f00"
     property color moderateYellow: "#eed202"
     property color normalGreen: "#01b36d"
+    property color stanbyColor: "#3c77d6"
 
     property color skyHighColor: "#0d1bd9"
     property color skyLowColor: "#00d4ff"
@@ -29,7 +30,6 @@ QtObject {
     property color groundOffHighColor: "#9ea79b"
     property color groundOffLowColor: "#30342e"
 
-    property color trackColor: "#64adf6"
     property color missionColor: "#1ce9a5"
 
     // air indicator
