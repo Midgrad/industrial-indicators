@@ -35,6 +35,7 @@ Joystick 1.0 Joystick.qml
 SquareJoystick 1.0 SquareJoystick.qml
 Strobe 1.0 Strobe.qml
 Arrow 1.0 Arrow.qml
+Variometer 1.0 Variometer.qml
 
 Clickable 1.0 Clickable.qml
 IconIndicator 1.0 IconIndicator.qml
