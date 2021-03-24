@@ -4,10 +4,10 @@ import Industrial.Indicators 1.0
 Scale {
     id: root
 
-    property string tipText
-    property int digits: 0
-    property string prefix
-    property string suffix
+    property alias tipText: label.tipText
+    property alias digits: label.digits
+    property alias prefix: label.prefix
+    property alias suffix: label.suffix
 
     property color labelColor: enabled ? (operational ? Theme.textColor : Theme.extremeRed) :
                                          Theme.disabledColor
@@ -51,8 +51,7 @@ Scale {
             if (isNaN(value))
                 return root.height / 2;
 
-            var pos = root.height - mapToRange(value) - height / 2;
-            return Math.min(root.height, Math.max(0, pos));
+            return Math.min(root.height, Math.max(0, root.height - mapToRange(value) - height / 2));
         }
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right
@@ -60,10 +59,7 @@ Scale {
         width: parent.width - tickMajorSize
         operational: root.operational
         value: root.value
-        digits: root.digits
-        prefix: root.prefix
-        suffix: root.suffix
+        digits: 0
         color: labelColor
-        tipText: tipText
     }
 }
