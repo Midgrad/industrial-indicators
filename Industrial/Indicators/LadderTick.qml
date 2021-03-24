@@ -1,24 +1,12 @@
 import QtQuick 2.6
+import Industrial.Indicators 1.0
 
-Item {
+ScaleTick {
     id: root
 
     property real value: 0
     property int digits: 0
-    property bool mirrored: false
-    property bool major: true
     property bool sign: true
-    property color color: scaleColor
-
-    Rectangle {
-        id: tick
-        anchors.left: mirrored ? parent.left : undefined
-        anchors.right: mirrored ? undefined : parent.right
-        anchors.verticalCenter: parent.verticalCenter
-        width: major ? tickMajorSize : tickMinorSize
-        height: major ? tickMajorWidth : tickMinorWidth
-        color: root.color
-    }
 
     Text {
         id: label
@@ -29,7 +17,7 @@ Item {
         horizontalAlignment: mirrored ? Text.AlignLeft : Text.AlignRight
         visible: sign
         text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
-        font.pixelSize: scaleFontSize
+        font.pixelSize: tickFontSize
         color: root.color
     }
 }

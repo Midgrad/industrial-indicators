@@ -1,132 +1,37 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
 
-OperationalItem {
+Scale {
     id: root
 
-    property string tipTextValue
-
+    property string tipText
     property int digits: 0
-    property real value: 50
-    property real error: 0
-    property bool errorVisible: false
-    property real warningValue: NaN
-    property real minValue: 0
-    property real maxValue: 100
-    property real valueStep: 10
-
-    property bool mirrored: false
-    property bool labelBorder: true
-    property bool shading: false
-
-    property alias scaleFontSize: label.prefixFont.pixelSize
-    property real tickMinorSize: scaleFontSize * 0.4
-    property real tickMajorSize: scaleFontSize * 0.6
-    property real textOffset: scaleFontSize * 0.8
-    property real tickMajorWidth: 2
-    property real tickMinorWidth: 1
-
     property string prefix
     property string suffix
 
-    property color scaleColor: enabled ? (operational ? Theme.textColor : Theme.extremeRed) :
-                                         Theme.disabledColor
     property color labelColor: enabled ? (operational ? Theme.textColor : Theme.extremeRed) :
                                          Theme.disabledColor
-    property color hatchColor: Theme.severeOrange
-    property color backgroundColor: Theme.backgroundColor
-
-    function mapToRange(val) {
-        return Helper.mapToRange(val, minValue, maxValue, repeater.height) -
-                (labelBorder ? label.height / 2 : 0);
-    }
-
-    function mapFromRange(pos) {
-        return Helper.mapFromRange(pos, minValue, maxValue, repeater.height) +
-                (labelBorder ? label.height / 2 : 0);
-    }
 
     implicitWidth: label.implicitWidth + tickMajorSize * 2
 
-    Hatch {
-        id: hatch
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        height: Math.min(repeater.height, Math.max(mapToRange(warningValue)))
-        visible: !isNaN(warningValue)
-        color: enabled ? hatchColor : Theme.backgroundColor
-        z: -1
+    delegate: LadderTick {
+        property bool extreme: value === minValue || value === maxValue
 
-        Rectangle {
-            anchors.top: parent.top
-            width: parent.width
-            height: tickMajorWidth
-            color: parent.color
-        }
+        anchors.left: mirrored ? line.right : parent.left
+        anchors.right: mirrored ? parent.right : line.left
+        y: root.height - mapToRange(value)
+        value: modelData
+        major: index % 2 === 0 || extreme
+        sign: (index % 2 === 0 || extreme)
+        mirrored: root.mirrored
+        opacity: shading ? Math.sin(y / root.height * Math.PI) : 1
     }
 
     Rectangle {
-        anchors.fill: parent
+        anchors.fill: label
+        anchors.leftMargin: mirrored ? tickMinorWidth - tickMajorSize : 0
+        anchors.rightMargin: mirrored ? 0 : tickMinorWidth - tickMajorSize
         color: backgroundColor
-    }
-
-    Rectangle {
-        id: shadingLine
-        visible: shading
-        anchors.left: mirrored ? parent.left : undefined
-        anchors.right: mirrored ? undefined : parent.right
-        width: tickMinorWidth
-        height: repeater.height
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: "transparent" }
-            GradientStop { position: 0.5; color: scaleColor }
-            GradientStop { position: 1.0; color: "transparent" }
-        }
-        y: labelBorder ? label.height / 2 : 0
-    }
-
-    Rectangle {
-        id: line
-        visible: !shading
-        anchors.left: mirrored ? parent.left : undefined
-        anchors.right: mirrored ? undefined : parent.right
-        width: tickMinorWidth
-        height: repeater.height
-        color: scaleColor
-        y: labelBorder ? label.height / 2 : 0
-    }
-
-    Repeater {
-        id: repeater
-        height: root.height - (labelBorder ? label.height : 0)
-        model: {
-            var vals = [];
-
-            var min = Helper.floor125(minValue);
-            var step = Helper.floor125(valueStep / 2);
-
-            if (min < maxValue && step > 0) {
-                for (var val = min; val <= maxValue; val += step)
-                    vals.push(val);
-            }
-            return vals;
-        }
-
-        LadderTick {
-            property bool coverage: (y >= label.y) && (y <= (label.y + label.height))
-            property bool extreme: value === minValue || value === maxValue
-
-            anchors.left: mirrored ? line.right : parent.left
-            anchors.right: mirrored ? parent.right : line.left
-            y: repeater.height - mapToRange(value)
-            visible: !coverage || extreme
-            value: modelData
-            major: index % 2 === 0 || extreme
-            sign: (index % 2 === 0 || extreme) && !coverage
-            mirrored: root.mirrored
-            opacity: shading ? Math.sin(y / root.height * Math.PI) : 1
-        }
     }
 
     IconIndicator {
@@ -144,21 +49,21 @@ OperationalItem {
         id: label
         y: {
             if (isNaN(value))
-                return repeater.height / 2;
+                return root.height / 2;
 
-            var pos = repeater.height - mapToRange(value) - height / 2;
-            return Math.min(repeater.height, Math.max(0, pos));
+            var pos = root.height - mapToRange(value) - height / 2;
+            return Math.min(root.height, Math.max(0, pos));
         }
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right
         anchors.margins: tickMajorSize
         width: parent.width - tickMajorSize
-        value: root.value
         operational: root.operational
+        value: root.value
         digits: root.digits
         prefix: root.prefix
         suffix: root.suffix
         color: labelColor
-        tipText: tipTextValue
+        tipText: tipText
     }
 }
