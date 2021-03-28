@@ -1,5 +1,6 @@
 import QtQuick 2.6
 
+// TODO: Base on ScaleTick
 Item {
     id: root
 

@@ -90,6 +90,7 @@ OperationalItem {
             tickFontSize: root.tickFontSize
             color: root.scaleColor
             opacity: root.shading ? Math.sin(y / root.height * Math.PI) : 1.0
+            visible: !isNaN(value)
             value: modelData["value"]
             tickSize: modelData["major"] ? tickMajorSize : tickMinorSize
             tickWidth: modelData["major"] ? tickMajorWidth : tickMinorWidth

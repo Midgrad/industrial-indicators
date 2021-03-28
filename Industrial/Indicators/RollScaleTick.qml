@@ -1,5 +1,6 @@
 import QtQuick 2.6
 
+// TODO: Replace with ScaleTick
 Item {
     id: root
 

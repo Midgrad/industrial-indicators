@@ -34,7 +34,8 @@ LinearScale {
             if (isNaN(value))
                 return root.height / 2;
 
-            return Math.min(root.height, Math.max(0, root.height - mapToRange(value) - height / 2));
+            return Math.min(root.height - height,
+                            Math.max(0, root.height - mapToRange(value) - height / 2));
         }
         anchors.left: mirrored ? parent.left : undefined
         anchors.right: mirrored ? undefined : parent.right

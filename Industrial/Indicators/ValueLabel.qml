@@ -36,6 +36,7 @@ OperationalItem {
             id: prefixText
             anchors.top: parent.top
             width: root.width
+            height: visible ? implicitHeight : 0
             horizontalAlignment: Text.AlignHCenter
             color: root.color
             font.bold: true

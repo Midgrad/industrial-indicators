@@ -10,6 +10,7 @@ Scale {
     property real minValueImpl: minValue
     property real valueStepImpl: valueStep
     property real dValue: -1
+    property int majorFactor: 2
 
     mapToRange: function (val) {
         return Helper.mapToRange(val, minValue, maxValue, root.height);
@@ -32,7 +33,7 @@ Scale {
 
                 let item = {
                     value: tickValue,
-                    major: index % 2 == 0
+                    major: index % majorFactor == 0
                 }
 
                 vals.push(item);

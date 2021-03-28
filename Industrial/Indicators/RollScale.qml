@@ -1,6 +1,7 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
 
+// TODO: Base on LinearScale
 Item {
     id: root
 
