@@ -4,13 +4,8 @@ import Industrial.Indicators 1.0
 OperationalItem {
     id: root
 
-    property real value: 50
-    property real error: 0
-    property bool errorVisible: false
+    property real value: 0
     property real warningValue: NaN
-    property real minValue: 0
-    property real maxValue: 100
-    property real valueStep: 10
 
     property bool mirrored: false
     property bool shading: true
@@ -31,13 +26,8 @@ OperationalItem {
     property alias delegate: repeater.delegate
     property alias line: line
 
-    function mapToRange(val) {
-        return Helper.mapToRange(val, minValue, maxValue, root.height);
-    }
-
-    function mapFromRange(pos) {
-        return Helper.mapFromRange(pos, minValue, maxValue, root.height);
-    }
+    property var mapToRange: function(value) { return value; }
+    property var mapFromRange: function(value) { return value; }
 
     implicitWidth: tickMajorSize * 2
 
@@ -90,27 +80,20 @@ OperationalItem {
 
     Repeater {
         id: repeater
-        model: {
-            var vals = [];
-
-            var min = Helper.floor125(minValue);
-            var step = Helper.floor125(valueStep / 2);
-
-            if (min < maxValue && step > 0) {
-                for (var val = min; val <= maxValue; val += step)
-                    vals.push(val);
-            }
-            return vals;
-        }
 
         delegate: ScaleTick {
-            property bool extreme: value === minValue || value === maxValue
             anchors.left: mirrored ? line.right : parent.left
             anchors.right: mirrored ? parent.right : line.left
             y: root.height - mapToRange(value)
-            major: index % 2 === 0 || extreme
             mirrored: root.mirrored
-            opacity: shading ? Math.sin(y / root.height * Math.PI) : 1
+            textOffset: root.textOffset
+            tickFontSize: root.tickFontSize
+            color: root.scaleColor
+            opacity: root.shading ? Math.sin(y / root.height * Math.PI) : 1.0
+            value: modelData["value"]
+            tickSize: modelData["major"] ? tickMajorSize : tickMinorSize
+            tickWidth: modelData["major"] ? tickMajorWidth : tickMinorWidth
+            labeled: modelData["major"]
         }
     }
 }

@@ -14,8 +14,8 @@
         <file>Industrial/Indicators/TurnIndicator.qml</file>
         <file>Industrial/Indicators/Scale.qml</file>
         <file>Industrial/Indicators/ScaleTick.qml</file>
+        <file>Industrial/Indicators/LinearScale.qml</file>
         <file>Industrial/Indicators/Ladder.qml</file>
-        <file>Industrial/Indicators/LadderTick.qml</file>
         <file>Industrial/Indicators/PitchScale.qml</file>
         <file>Industrial/Indicators/PitchScaleTick.qml</file>
         <file>Industrial/Indicators/RollScale.qml</file>

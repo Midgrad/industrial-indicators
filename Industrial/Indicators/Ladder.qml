@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import Industrial.Indicators 1.0
 
-Scale {
+LinearScale {
     id: root
 
     property alias tipText: label.tipText
@@ -13,26 +13,9 @@ Scale {
                                          Theme.disabledColor
 
     implicitWidth: label.implicitWidth + tickMajorSize * 2
-
-    delegate: LadderTick {
-        property bool extreme: value === minValue || value === maxValue
-
-        anchors.left: mirrored ? line.right : parent.left
-        anchors.right: mirrored ? parent.right : line.left
-        y: root.height - mapToRange(value)
-        value: modelData
-        major: index % 2 === 0 || extreme
-        sign: (index % 2 === 0 || extreme)
-        mirrored: root.mirrored
-        opacity: shading ? Math.sin(y / root.height * Math.PI) : 1
-    }
-
-    Rectangle {
-        anchors.fill: label
-        anchors.leftMargin: mirrored ? tickMinorWidth - tickMajorSize : 0
-        anchors.rightMargin: mirrored ? 0 : tickMinorWidth - tickMajorSize
-        color: backgroundColor
-    }
+    minValueImpl: Helper.floor125(minValue);
+    valueStepImpl: Helper.floor125(valueStep / 2);
+    dValue: (mapFromRange(label.y + label.height) - mapFromRange(label.y)) / 2
 
     IconIndicator {
         anchors.right: mirrored ? undefined : root.right

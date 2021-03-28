@@ -4,6 +4,7 @@ import Industrial.Indicators 1.0
 OperationalItem {
     id: root
 
+    property string tipText
     property int digits: 0
     property real value: NaN
     property bool active: false
@@ -17,7 +18,6 @@ OperationalItem {
     property alias prefix: prefixText.text
     property alias suffix: suffixText.text
     property alias valueText: valueText.text
-    property string tipText
     property alias prefixFont: prefixText.font
     property alias suffixFont: suffixText.font
     property alias valueFont: valueText.font

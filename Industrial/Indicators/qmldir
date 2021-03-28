@@ -15,9 +15,9 @@ PlaneMark 1.0 PlaneMark.qml
 DesiredAnglesMark 1.0 DesiredAnglesMark.qml
 TurnIndicator 1.0 TurnIndicator.qml
 Scale 1.0 Scale.qml
+LinearScale 1.0 LinearScale.qml
 ScaleTick 1.0 ScaleTick.qml
 Ladder 1.0 Ladder.qml
-LadderTick 1.0 LadderTick.qml
 PitchScale 1.0 PitchScale.qml
 PitchScaleTick 1.0 PitchScaleTick.qml
 RollScale 1.0 RollScale.qml
