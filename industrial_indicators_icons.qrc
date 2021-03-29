@@ -9,7 +9,8 @@
         <file>icons/ind_bank_right.svg</file>
         <file>icons/ind_yaw_left.svg</file>
         <file>icons/ind_yaw_right.svg</file>
-        <file>icons/ind_ladder_arrow.svg</file>
+        <file>icons/ind_scale_arrow.svg</file>
+        <file>icons/ind_arrow_offset.svg</file>
         <file>icons/ind_heading_arrow.svg</file>
         <file>icons/ind_course_arrow.svg</file>
         <file>icons/track.svg</file>

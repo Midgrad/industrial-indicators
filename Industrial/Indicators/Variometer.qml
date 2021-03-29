@@ -6,11 +6,15 @@ LinearScale {
 
     property alias tipText: tip.text
 
-    minValue: -15
-    maxValue: 15
-    valueStep: 2.5
-    dValue: (mapFromRange(label.y + label.height) - mapFromRange(label.y)) / 2
+    property color arrowColor: enabled ? (operational ? Theme.textColor : Theme.extremeRed) :
+                                         Theme.disabledColor
 
+    minValue: -16
+    maxValue: 16
+    valueStep: 2
+    tickMinorSize: tickFontSize * 0.2
+    tickMajorSize: tickFontSize * 0.4
+    textOffset: tickFontSize * 0.6
     mirrored: true
     shading: true
 
@@ -25,18 +29,31 @@ LinearScale {
         visible: text ? mouseArea.containsMouse : false
     }
 
-    IconIndicator {
-        anchors.right: mirrored ? undefined : root.right
-        anchors.left: mirrored ? root.left : undefined
-        y: label.y
-        width: tickMajorSize
-        height: label.height
-        rotation:  mirrored ? 180 : 0
-        source: "qrc:/icons/ind_ladder_arrow.svg"
+    Rectangle {
+        anchors.left: parent.left
+        width: arrow.width / 2
+        anchors.top: value > 0 ? arrow.verticalCenter : zeroPosition.verticalCenter
+        anchors.bottom: value > 0 ? zeroPosition.verticalCenter : arrow.verticalCenter
+        color: value > 0 ? Theme.skyLowColor: Theme.groundHighColor
     }
 
-    ValueLabel {
-        id: label
+    IconIndicator {
+        id: zeroPosition
+        anchors.right: mirrored ? undefined : root.right
+        anchors.left: mirrored ? root.left : undefined
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.leftMargin: -tickMinorWidth
+        width: textOffset
+        height: width
+        rotation: mirrored ? 180 : 0
+        source: "qrc:/icons/ind_arrow_offset.svg"
+        color: scaleColor
+    }
+
+    IconIndicator {
+        id: arrow
+        anchors.right: mirrored ? undefined : root.right
+        anchors.left: mirrored ? root.left : undefined
         y: {
             if (isNaN(value))
                 return root.height / 2;
@@ -44,13 +61,10 @@ LinearScale {
             return Math.min(root.height - height,
                             Math.max(0, root.height - mapToRange(value) - height / 2));
         }
-        anchors.left: mirrored ? parent.left : undefined
-        anchors.right: mirrored ? undefined : parent.right
-        width: parent.width
-        operational: root.operational
-        value: root.value
-        digits: 1
-
-        PropertyAnimation on y { duration: 100 }
+        width: tickMajorSize
+        height: Theme.baseSize * 2
+        rotation: mirrored ? 180 : 0
+        source: "qrc:/icons/ind_scale_arrow.svg"
+        color: arrowColor
     }
 }

@@ -24,7 +24,7 @@ LinearScale {
         width: tickMajorSize
         height: label.height
         rotation:  mirrored ? 180 : 0
-        source: "qrc:/icons/ind_ladder_arrow.svg"
+        source: "qrc:/icons/ind_scale_arrow.svg"
         color: labelColor
     }
 
