@@ -26,7 +26,7 @@ function floor125(x)
         return 0.0;
 
     var sign = (x > 0) ? 1.0 : -1.0;
-    var lx = Math.log10(Math.abs(x));
+    var lx = Math.log(Math.abs(x)) / Math.LN10;
     var p10 = Math.floor(lx);
 
     var fr = Math.pow(10.0, lx - p10);
@@ -48,7 +48,7 @@ function ceil125(x)
         return 0.0;
 
     var sign = (x > 0) ? 1.0 : -1.0;
-    var lx = Math.log10(Math.abs(x));
+    var lx = Math.log(Math.abs(x)) / Math.LN10;
     var p10 = Math.floor(lx);
 
     var fr = Math.pow(10.0, lx - p10);
