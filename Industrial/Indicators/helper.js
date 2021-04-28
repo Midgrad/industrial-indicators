@@ -1,14 +1,14 @@
 .pragma library
 
 function angle180(value) {
-    while (value <= -180) value += 360;
-    while (value > 180) value -= 360;
+    if (value <= -180) value = (value - 180) % 360 + 180;
+    if (value > 180) value = (value + 180) % 360 - 180;
     return value;
 }
 
 function angle360(value) {
-    while (value < 0) value += 360;
-    while (value >= 360) value -= 360;
+    if (value < 0) value = value % 360 + 360;
+    if (value >= 360) value = value % 360;
     return value;
 }
 
