@@ -21,7 +21,7 @@ set (QML_IMPORT_PATH ${QML_IMPORT_PATH} ${CMAKE_CURRENT_LIST_DIR} CACHE STRING "
 target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_LIST_DIR}/includes")
 
 # Sources
-file(GLOB_RECURSE SOURCES "*.h" "*.hpp" "*.cpp")
+file(GLOB SOURCES "*.h" "*.hpp" "*.cpp")
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
 
 # Create translations QRC file
@@ -39,7 +39,7 @@ file(APPEND ${TRANSLATIONS_QRC} "\n\t</qresource>\n</RCC>")
 list(APPEND QRC_FILES ${TRANSLATIONS_QRC})
 
 # Resources
-file(GLOB_RECURSE LOC_QRC_FILES "*.qrc")
+file(GLOB LOC_QRC_FILES "*.qrc")
 
 # Compile resources
 qt5_add_resources(QRC_SOURCES ${QRC_FILES} ${LOC_QRC_FILES})
