@@ -16,6 +16,9 @@ Item {
     property int activeModelNumUp: 1
     property int activeModelNumDown: 1
 
+    property bool isEmergency: true
+    property bool isAnalyzeEnabled: false
+
     property alias modelUp: repeaterUp.model
     property alias modelDown: repeaterDown.model
 
@@ -111,19 +114,50 @@ Item {
         }
     }
 
+    function calculateScaleColor(index, modelDataColor) {
+        if (root.enabled) {
+            if (root.isEmergency)
+                return Theme.extremeRed;
+            if (index === 0)
+                return "transparent";
+            else
+                return modelDataColor;
+        }
+        return Theme.disabledColor;
+    }
+
+    function calculateScaleOpacity(index) {
+        if (!root.enabled || root.isEmergency ||
+                (index !== 0 && index === root.activeModelNumUp))
+            return 1;
+        else
+            return 0.2;
+    }
+
+    function calculateStateColor(scaleColor) {
+        if (root.isEmergency && root.enabled)
+            return Theme.extremeRed;
+        if (!root.enabled)
+            return Theme.disabledColor;
+        if (!root.isAnalyzeEnabled)
+            return Theme.textColor;
+        return scaleColor;
+    }
+
     Row {
         anchors.fill: parent
         spacing: root.spacing
+        anchors.bottomMargin: Theme.margins / 8
 
         Repeater {
             id: repeaterUp
             model: [
                 {value: 0},
-                { percentage: 10, value: 10, color: Theme.extremeRed },
+                { percentage: 10, value: 10, color: Theme.severeOrange },
                 { percentage: 20, value: 30, color: Theme.moderateYellow },
                 { percentage: 40, value: 70, color: Theme.normalGreen },
                 { percentage: 20, value: 90, color: Theme.moderateYellow },
-                { percentage: 10, value: 100, color: Theme.extremeRed }
+                { percentage: 10, value: 100, color: Theme.severeOrange }
             ]
 
             Item {
@@ -137,9 +171,8 @@ Item {
                     anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeaterUp.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color:  (index != 0 && index == root.activeModelNumUp) ? (root.enabled ? modelData.color : Theme.disabledColor)  : "transparent"
-                    border.width: 1
-                    border.color: root.enabled ? (index == 0 ? "transparent" : modelData.color) : Theme.disabledColor
+                    color: calculateScaleColor(index, modelData.color)
+                    opacity: calculateScaleOpacity(index)
                 }
             }
         }
@@ -148,16 +181,17 @@ Item {
     Row {
         anchors.fill: parent
         spacing: root.spacing
+        anchors.topMargin: Theme.margins / 8
 
         Repeater {
             id: repeaterDown
             model: [
                 {value: 0},
-                { percentage: 10, value: 10, color: Theme.extremeRed },
+                { percentage: 10, value: 10, color: Theme.severeOrange },
                 { percentage: 20, value: 30, color: Theme.moderateYellow },
                 { percentage: 40, value: 70, color: Theme.normalGreen },
                 { percentage: 20, value: 90, color: Theme.moderateYellow },
-                { percentage: 10, value: 100, color: Theme.extremeRed }
+                { percentage: 10, value: 100, color: Theme.severeOrange }
             ]
 
             Item {
@@ -171,9 +205,8 @@ Item {
                     anchors.leftMargin: index == 1 ? 0 : -radius
                     anchors.rightMargin: index == repeaterDown.count - 1 ? 0 : -radius
                     radius: root.rounding
-                    color: (index != 0 && index == root.activeModelNumDown) ? (root.enabled ? modelData.color : Theme.disabledColor) : "transparent"
-                    border.width: 1
-                    border.color: root.enabled ? (index == 0 ? "transparent" : modelData.color) : Theme.disabledColor
+                    color: calculateScaleColor(index, modelData.color)
+                    opacity: calculateScaleOpacity(index)
                 }
             }
         }
@@ -188,14 +221,13 @@ Item {
         source: "qrc:/icons/ind_gauge_arrow.svg"
         color: Theme.backgroundColor
 
-
         IconIndicator {
             implicitWidth: Theme.baseSize
             implicitHeight: Theme.baseSize
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source
-            color: root.enabled ? root.colorUp : Theme.disabledColor
+            color: calculateStateColor(colorUp)
         }
     }
 
@@ -215,7 +247,7 @@ Item {
             anchors.fill: parent
             anchors.margins: 2
             source: parent.source
-            color: root.enabled ? root.colorDown : Theme.disabledColor
+            color: calculateStateColor(colorDown)
         }
     }
 }
