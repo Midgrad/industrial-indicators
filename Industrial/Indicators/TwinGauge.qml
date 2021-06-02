@@ -16,8 +16,13 @@ Item {
     property int activeModelNumUp: 1
     property int activeModelNumDown: 1
 
-    property bool isEmergency: true
-    property bool isAnalyzeEnabled: false
+    property bool emergency: false
+    property bool analyzeEnabled: false
+    property bool outOfRangeIndication: true
+    property color outOfRangeColor: Theme.extremeRed
+
+    property int arrowRotationUp: 0
+    property int arrowRotationDown: 0
 
     property alias modelUp: repeaterUp.model
     property alias modelDown: repeaterDown.model
@@ -45,6 +50,10 @@ Item {
             activeModelNumUp = 0;
             _persentUp = 0;
             colorUp = modelUp[1].color;
+            if (outOfRangeIndication) {
+                colorUp = outOfRangeColor;
+                arrowRotationUp = 90;
+            }
             return;
         }
 
@@ -52,10 +61,15 @@ Item {
             activeModelNumUp = 0;
             _persentUp = 100;
             colorUp = modelUp[modelUp.length - 1].color;
+            if (outOfRangeIndication) {
+                colorUp = outOfRangeColor
+                arrowRotationUp = -90;
+            }
             return;
         }
 
         _persentUp = 0;
+        arrowRotationUp = 0;
 
         for (var i = 1; i < modelUp.length; ++i) {
             if (valueUp > modelUp[i].value) {
@@ -86,6 +100,10 @@ Item {
             activeModelNumDown = 0;
             _persentDown = 0;
             colorDown = modelDown[1].color;
+            if (outOfRangeIndication) {
+                colorDown = outOfRangeColor;
+                arrowRotationDown = -90;
+            }
             return;
         }
 
@@ -93,10 +111,15 @@ Item {
             activeModelNumDown = 0;
             _persentDown = 100;
             colorDown = modelDown[modelDown.length - 1].color;
+            if (outOfRangeIndication) {
+                colorDown = outOfRangeColor;
+                arrowRotationDown = 90;
+            }
             return;
         }
 
         _persentDown = 0;
+        arrowRotationDown = 0;
 
         for (var i = 1; i < modelDown.length; ++i) {
             if (valueDown > modelDown[i].value) {
@@ -116,8 +139,6 @@ Item {
 
     function calculateScaleColor(index, modelDataColor) {
         if (root.enabled) {
-            if (root.isEmergency)
-                return Theme.extremeRed;
             if (index === 0)
                 return "transparent";
             else
@@ -126,20 +147,19 @@ Item {
         return Theme.disabledColor;
     }
 
-    function calculateScaleOpacity(index) {
-        if (!root.enabled || root.isEmergency ||
-                (index !== 0 && index === root.activeModelNumUp))
+    function calculateScaleOpacity(index, activeModelNum) {
+        if (!root.enabled || ((index !== 0 && index === activeModelNum) && analyzeEnabled))
             return 1;
         else
             return 0.2;
     }
 
     function calculateStateColor(scaleColor) {
-        if (root.isEmergency && root.enabled)
+        if (root.emergency && root.enabled)
             return Theme.extremeRed;
         if (!root.enabled)
             return Theme.disabledColor;
-        if (!root.isAnalyzeEnabled)
+        if (!root.analyzeEnabled)
             return Theme.textColor;
         return scaleColor;
     }
@@ -172,7 +192,7 @@ Item {
                     anchors.rightMargin: index == repeaterUp.count - 1 ? 0 : -radius
                     radius: root.rounding
                     color: calculateScaleColor(index, modelData.color)
-                    opacity: calculateScaleOpacity(index)
+                    opacity: calculateScaleOpacity(index, root.activeModelNumUp)
                 }
             }
         }
@@ -206,7 +226,7 @@ Item {
                     anchors.rightMargin: index == repeaterDown.count - 1 ? 0 : -radius
                     radius: root.rounding
                     color: calculateScaleColor(index, modelData.color)
-                    opacity: calculateScaleOpacity(index)
+                    opacity: calculateScaleOpacity(index, root.activeModelNumDown)
                 }
             }
         }
@@ -220,6 +240,7 @@ Item {
         width: height
         source: "qrc:/icons/ind_gauge_arrow.svg"
         color: Theme.backgroundColor
+        rotation: root.arrowRotationUp
 
         IconIndicator {
             implicitWidth: Theme.baseSize
@@ -239,7 +260,7 @@ Item {
         width: height
         source: "qrc:/icons/ind_gauge_arrow.svg"
         color: Theme.backgroundColor
-        rotation: 180
+        rotation: root.arrowRotationDown + 180
 
         IconIndicator {
             implicitWidth: Theme.baseSize
