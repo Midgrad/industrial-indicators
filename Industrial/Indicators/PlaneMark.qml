@@ -11,6 +11,8 @@ Item {
     property color markColor: Theme.aiMarkColor
     property real markWidth: 2
 
+    property real zigzag: 8.0
+
     implicitHeight: width
     onWidthChanged: canvas.requestPaint()
     onHeightChanged: canvas.requestPaint()
@@ -41,13 +43,13 @@ Item {
 
             ctx.translate(width / 2, height / 2);
 
-            ctx.moveTo(-width / 2, 0);
-            ctx.lineTo(-width / 4, 0);
-            ctx.lineTo(-width / 8, width / 8);
+            ctx.moveTo(-width / zigzag * 4, 0);
+            ctx.lineTo(-width / zigzag * 2, 0);
+            ctx.lineTo(-width / zigzag, width / zigzag);
             ctx.lineTo(0, 0);
-            ctx.lineTo(width / 8, width / 8);
-            ctx.lineTo(width / 4, 0);
-            ctx.lineTo(width / 2, 0);
+            ctx.lineTo(width / zigzag, width / zigzag);
+            ctx.lineTo(width / zigzag * 2, 0);
+            ctx.lineTo(width / zigzag * 4, 0);
 
             ctx.moveTo(0, 0);
             ctx.arc(0, 0, markWidth, 0, 2 * Math.PI, false);

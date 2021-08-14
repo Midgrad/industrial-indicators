@@ -4,8 +4,8 @@ AttitudeIndicator {
     id: fd
 
     property string tipText
-    property real desiredPitch: 0.0
-    property real desiredRoll: 0.0
+    property real desiredPitch: NaN
+    property real desiredRoll: NaN
 
     property real pitchStep: 5
     property real maxRoll: width > height ? 90 : 90 - (180 * Math.acos(width / height) / Math.PI)
@@ -61,7 +61,7 @@ AttitudeIndicator {
     DesiredAnglesMark {
         id: desiredMark
         anchors.centerIn: parent
-        width: parent.width * 0.7
+        width: parent.width * markFactor
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? fd.pitch - desiredPitch : -desiredPitch
         roll: rollInverted ? -desiredRoll : fd.roll - desiredRoll
