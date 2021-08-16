@@ -6,6 +6,7 @@ T.Label {
 
     font.pixelSize: Theme.fontSize
     color: control.enabled ? Theme.textColor : Theme.disabledColor
+    horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
     elide: Text.ElideRight
 }

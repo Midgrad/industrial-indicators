@@ -37,7 +37,6 @@ OperationalItem {
             anchors.top: parent.top
             width: root.width
             height: visible ? implicitHeight : 0
-            horizontalAlignment: Text.AlignHCenter
             color: root.color
             font.bold: true
             font.pixelSize: Theme.fontSize * 0.8
@@ -48,7 +47,6 @@ OperationalItem {
             id: valueText
             anchors.top: prefixText.bottom
             width: root.width
-            horizontalAlignment: Text.AlignHCenter
             color: root.color
             font.bold: true
             font.pixelSize: Theme.fontSize
@@ -59,7 +57,6 @@ OperationalItem {
             id: suffixText
             anchors.bottom: parent.bottom
             width: root.width
-            horizontalAlignment: Text.AlignHCenter
             color: root.color
             font: prefixText.font
             visible: suffix.length > 0
