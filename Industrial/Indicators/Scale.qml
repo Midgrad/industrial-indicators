@@ -10,7 +10,7 @@ OperationalItem {
     property bool mirrored: false
     property bool shading: true
 
-    property real tickFontSize: Theme.fontSize * 0.8;
+    property real tickFontSize: Theme.auxFontSize
     property real tickMinorSize: tickFontSize * 0.4
     property real tickMajorSize: tickFontSize * 0.6
     property real textOffset: tickFontSize * 0.8

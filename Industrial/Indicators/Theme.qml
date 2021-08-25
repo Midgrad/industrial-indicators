@@ -6,6 +6,7 @@ QtObject {
 
     property int baseSize: 16
     property int fontSize: 14
+    property int auxFontSize: fontSize * 0.8
     property int margins: 8
     property int padding: 4
 

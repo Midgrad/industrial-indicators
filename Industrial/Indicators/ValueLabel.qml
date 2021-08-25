@@ -39,7 +39,7 @@ OperationalItem {
             height: visible ? implicitHeight : 0
             color: root.color
             font.bold: true
-            font.pixelSize: Theme.fontSize * 0.8
+            font.pixelSize: Theme.auxFontSize
             visible: prefix.length > 0
         }
 
