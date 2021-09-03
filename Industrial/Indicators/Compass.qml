@@ -4,16 +4,17 @@ import Industrial.Indicators 1.0
 OperationalItem {
     id: root
 
+    property bool online: true
     property string tipText
     property real heading: 0
     property real course: 0
     property bool courseEnabled: true
     readonly property real safeHeading: isNaN(heading) ? 0 : heading
 
-    property color iconColor: Theme.textColor
+    property color iconColor: online ? Theme.textColor : Theme.disabledColor
     property color courseColor: Theme.normalGreen
     property color headingColor: {
-        if (!enabled) return Theme.disabledColor;
+        if (!online || !enabled) return Theme.disabledColor;
         if (!operational) return Theme.extremeRed;
         return Theme.textColor;
     }
