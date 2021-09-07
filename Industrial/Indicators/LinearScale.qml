@@ -6,6 +6,7 @@ Scale {
 
     property real minValue: 0
     property real maxValue: 100
+    property real maxTicks: 1000
     property real valueStep: 10
     property real minValueImpl: minValue
     property real valueStepImpl: valueStep
@@ -37,6 +38,9 @@ Scale {
                 }
 
                 vals.push(item);
+
+                if (index >= maxTicks)
+                    break;
             }
         }
         return vals;
